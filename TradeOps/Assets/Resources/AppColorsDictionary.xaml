@@ -1,0 +1,112 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Base Background Color -->
+    <Color x:Key="BaseBackgroundColor">#FFEEEEEE</Color>
+    <SolidColorBrush x:Key="BaseBackgroundBrush" Color="{StaticResource BaseBackgroundColor}" />
+
+    <!-- Background Shades (Darker) -->
+    <Color x:Key="BackgroundShade1">#FFD6D6D6</Color>
+    <Color x:Key="BackgroundShade2">#FFBEBEBE</Color>
+    <Color x:Key="BackgroundShade3">#FFA7A7A7</Color>
+    <Color x:Key="BackgroundShade4">#FF8F8F8F</Color>
+    <Color x:Key="BackgroundShade5">#FF777777</Color>
+    <Color x:Key="BackgroundShade6">#FF5F5F5F</Color>
+
+    <SolidColorBrush x:Key="BackgroundShadeBrush1" Color="{StaticResource BackgroundShade1}" />
+    <SolidColorBrush x:Key="BackgroundShadeBrush2" Color="{StaticResource BackgroundShade2}" />
+    <SolidColorBrush x:Key="BackgroundShadeBrush3" Color="{StaticResource BackgroundShade3}" />
+    <SolidColorBrush x:Key="BackgroundShadeBrush4" Color="{StaticResource BackgroundShade4}" />
+    <SolidColorBrush x:Key="BackgroundShadeBrush5" Color="{StaticResource BackgroundShade5}" />
+    <SolidColorBrush x:Key="BackgroundShadeBrush6" Color="{StaticResource BackgroundShade6}" />
+
+    <!-- Background Tints (Lighter) -->
+    <Color x:Key="BackgroundTint1">#FFF0F0F0</Color>
+    <Color x:Key="BackgroundTint2">#FFF1F1F1</Color>
+    <Color x:Key="BackgroundTint3">#FFF3F3F3</Color>
+    <Color x:Key="BackgroundTint4">#FFF5F5F5</Color>
+    <Color x:Key="BackgroundTint5">#FFF8F8F8</Color>
+    <Color x:Key="BackgroundTint6">#FFFCFCFC</Color>
+    <Color x:Key="BackgroundTint7">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="BackgroundTintBrush1" Color="{StaticResource BackgroundTint1}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush2" Color="{StaticResource BackgroundTint2}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush3" Color="{StaticResource BackgroundTint3}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush4" Color="{StaticResource BackgroundTint4}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush5" Color="{StaticResource BackgroundTint5}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush6" Color="{StaticResource BackgroundTint6}" />
+    <SolidColorBrush x:Key="BackgroundTintBrush7" Color="{StaticResource BackgroundTint7}" />
+
+
+    <!-- Base Primary Color -->
+    <Color x:Key="PrimaryColor">#FF00ADB5</Color>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+    <!-- Primary Shades (Darker) -->
+    <Color x:Key="PrimaryShade1">#FF009CA3</Color>
+    <Color x:Key="PrimaryShade2">#FF008A91</Color>
+    <Color x:Key="PrimaryShade3">#FF00797F</Color>
+    <Color x:Key="PrimaryShade4">#FF00686D</Color>
+    <Color x:Key="PrimaryShade5">#FF00575B</Color>
+    <Color x:Key="PrimaryShade6">#FF004548</Color>
+    <Color x:Key="PrimaryShade7">#FF002324</Color>
+
+    <SolidColorBrush x:Key="PrimaryShadeBrush1" Color="{StaticResource PrimaryShade1}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush2" Color="{StaticResource PrimaryShade2}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush3" Color="{StaticResource PrimaryShade3}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush4" Color="{StaticResource PrimaryShade4}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush5" Color="{StaticResource PrimaryShade5}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush6" Color="{StaticResource PrimaryShade6}" />
+    <SolidColorBrush x:Key="PrimaryShadeBrush7" Color="{StaticResource PrimaryShade7}" />
+
+    <!-- Primary Tints (Lighter) -->
+    <Color x:Key="PrimaryTint1">#FF1AB5BC</Color>
+    <Color x:Key="PrimaryTint2">#FF33BDC4</Color>
+    <Color x:Key="PrimaryTint3">#FF4DC6CB</Color>
+    <Color x:Key="PrimaryTint4">#FF66CED3</Color>
+    <Color x:Key="PrimaryTint5">#FF80D6DA</Color>
+    <Color x:Key="PrimaryTint6">#FF99DEE1</Color>
+    <Color x:Key="PrimaryTint7">#FFCCEFF0</Color>
+
+    <SolidColorBrush x:Key="PrimaryTintBrush1" Color="{StaticResource PrimaryTint1}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush2" Color="{StaticResource PrimaryTint2}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush3" Color="{StaticResource PrimaryTint3}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush4" Color="{StaticResource PrimaryTint4}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush5" Color="{StaticResource PrimaryTint5}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush6" Color="{StaticResource PrimaryTint6}" />
+    <SolidColorBrush x:Key="PrimaryTintBrush7" Color="{StaticResource PrimaryTint7}" />
+
+
+    <!-- Secondary Color -->
+    <Color x:Key="SecondaryColor">#FF393E46</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+
+    <!-- Secondary Shades -->
+    <Color x:Key="SecondaryShade1">#FF33383F</Color>
+    <Color x:Key="SecondaryShade2">#FF2E3238</Color>
+    <Color x:Key="SecondaryShade3">#FF282B31</Color>
+    <Color x:Key="SecondaryShade4">#FF22252A</Color>
+    <Color x:Key="SecondaryShade5">#FF1D1F23</Color>
+
+    <SolidColorBrush x:Key="SecondaryShadeBrush1" Color="{StaticResource SecondaryShade1}" />
+    <SolidColorBrush x:Key="SecondaryShadeBrush2" Color="{StaticResource SecondaryShade2}" />
+    <SolidColorBrush x:Key="SecondaryShadeBrush3" Color="{StaticResource SecondaryShade3}" />
+    <SolidColorBrush x:Key="SecondaryShadeBrush4" Color="{StaticResource SecondaryShade4}" />
+    <SolidColorBrush x:Key="SecondaryShadeBrush5" Color="{StaticResource SecondaryShade5}" />
+
+    <!-- Secondary Tints -->
+    <Color x:Key="SecondaryTint1">#FF4D5159</Color>
+    <Color x:Key="SecondaryTint2">#FF61656B</Color>
+    <Color x:Key="SecondaryTint3">#FF74787E</Color>
+    <Color x:Key="SecondaryTint4">#FF888B90</Color>
+    <Color x:Key="SecondaryTint5">#FF9C9FA3</Color>
+
+    <SolidColorBrush x:Key="SecondaryTintBrush1" Color="{StaticResource SecondaryTint1}" />
+    <SolidColorBrush x:Key="SecondaryTintBrush2" Color="{StaticResource SecondaryTint2}" />
+    <SolidColorBrush x:Key="SecondaryTintBrush3" Color="{StaticResource SecondaryTint3}" />
+    <SolidColorBrush x:Key="SecondaryTintBrush4" Color="{StaticResource SecondaryTint4}" />
+    <SolidColorBrush x:Key="SecondaryTintBrush5" Color="{StaticResource SecondaryTint5}" />
+
+    
+    
+
+</ResourceDictionary>

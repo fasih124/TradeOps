@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\filled_account_circle_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_filter_alt_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_group_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_inventory_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_print_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_receipt_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_search_64dp_222831.png" />
+    <None Remove="Assets\Images\filled_settings_64dp_222831.png" />
+    <None Remove="Assets\Images\login_64dp_222831.png" />
+    <None Remove="Assets\Images\logout_64dp_222831.png" />
+    <None Remove="Assets\Images\oultine_account_circle_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_filter_alt_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_group_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_inventory_2_64dp_222831.png" />
+    <None Remove="Assets\Images\oultine_login_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_print_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_receipt_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\oultine_settings_64dp_222831%281%29.png" />
+    <None Remove="Assets\Images\trolley_64dp_222831.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Assets\Resources\AppColorsDictionary.xaml" />
+    <Page Remove="Assets\Resources\AppTextStyleDictionary.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\filled_account_circle_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_filter_alt_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_group_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_inventory_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_print_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_receipt_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_search_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\filled_settings_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\login_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\logout_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_account_circle_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_filter_alt_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_group_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_inventory_2_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_login_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_print_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_receipt_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\oultine_settings_64dp_222831(1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\trolley_64dp_222831.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Resources\AppColorsDictionary.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Resources\AppTextStyleDictionary.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
