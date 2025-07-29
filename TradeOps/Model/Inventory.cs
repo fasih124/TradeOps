@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradeOps.Helper;
 
 namespace TradeOps.Model
 {
-    internal class Inventory
+    internal class Inventory : BaseViewModel
     {
         private int _stockQuantity;
-        public Inventory(int stockquantity) 
+        public int StockQuantity
         {
-            this._stockQuantity = stockquantity;
+            get => _stockQuantity;
+            set => SetProperty(ref _stockQuantity, value);
         }
 
-        public int getstockQuantity() { return this._stockQuantity; }
-        public void setstockQuantity(int value) { this._stockQuantity = value; }
+        public Inventory(int stockQuantity)
+        {
+            StockQuantity = stockQuantity;
+        }
+
+        public Inventory() { }
 
     }
 }

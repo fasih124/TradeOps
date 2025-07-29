@@ -4,31 +4,73 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradeOps.Helper;
 
 namespace TradeOps.Model
 {
-    internal class Product
+    internal class Product : BaseViewModel
     {
-        public String ID { get; set; }
-        public String Name { get; set; }
-        public double PurchasePrice { get; set; }
-        public double Sellingprice { get; set; }
-        public int ThresholdLevel { get; set; }
-        public bool IsOutOfSeason { get; set; }
-
-        public Inventory ProductInventory { get; set; }
-
-
-        public Product(string id,string name,double purchasePrice,double sellingPrice,int thresholdLevel,bool isoutofseason,Inventory inventory)
+        private string _id;
+        public string ID
         {
-            this.ID = id;
-            this.Name = name;
-            this.PurchasePrice = purchasePrice;
-            this.Sellingprice = sellingPrice;
-            this.ThresholdLevel = thresholdLevel;
-            this.IsOutOfSeason = isoutofseason;
+            get => _id;
+            set => SetProperty(ref _id, value);
+        }
+
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+
+        private double _purchasePrice;
+        public double PurchasePrice
+        {
+            get => _purchasePrice;
+            set => SetProperty(ref _purchasePrice, value);
+        }
+
+        private double _sellingPrice;
+        public double Sellingprice
+        {
+            get => _sellingPrice;
+            set => SetProperty(ref _sellingPrice, value);
+        }
+
+        private int _thresholdLevel;
+        public int ThresholdLevel
+        {
+            get => _thresholdLevel;
+            set => SetProperty(ref _thresholdLevel, value);
+        }
+
+        private bool _isOutOfSeason;
+        public bool IsOutOfSeason
+        {
+            get => _isOutOfSeason;
+            set => SetProperty(ref _isOutOfSeason, value);
+        }
+
+        private Inventory _productInventory;
+        public Inventory ProductInventory
+        {
+            get => _productInventory;
+            set => SetProperty(ref _productInventory, value);
+        }
+
+        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool isOutOfSeason, Inventory inventory)
+        {
+            ID = id;
+            Name = name;
+            PurchasePrice = purchasePrice;
+            Sellingprice = sellingPrice;
+            ThresholdLevel = thresholdLevel;
+            IsOutOfSeason = isOutOfSeason;
             ProductInventory = inventory;
         }
+
+        public Product() { }
 
 
 
