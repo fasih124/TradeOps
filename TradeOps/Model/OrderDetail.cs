@@ -23,10 +23,10 @@ namespace TradeOps.Model
             get => _quantity;
             set
             {
-                if (Product?.ProductInventory?.StockQuantity >= value)
+                if (Product?.StockQuantity >= value)
                 {
                     int difference = value - _quantity;
-                    Product.ProductInventory.StockQuantity -= difference;
+                    Product.StockQuantity -= difference;
                     SetProperty(ref _quantity, value);
                     UpdateCalculatedValues();
                 }
@@ -51,10 +51,10 @@ namespace TradeOps.Model
         {
             Product = product;
 
-            if (product.ProductInventory.StockQuantity >= quantity)
+            if (product.StockQuantity >= quantity)
             {
                 Quantity = quantity;
-                product.ProductInventory.StockQuantity -= quantity;
+                product.StockQuantity -= quantity;
             }
 
             UpdateCalculatedValues();

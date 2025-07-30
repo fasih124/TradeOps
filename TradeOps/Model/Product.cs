@@ -52,14 +52,15 @@ namespace TradeOps.Model
             set => SetProperty(ref _isOutOfSeason, value);
         }
 
-        private Inventory _productInventory;
-        public Inventory ProductInventory
+        private int _stockQuantity;
+        public int StockQuantity
         {
-            get => _productInventory;
-            set => SetProperty(ref _productInventory, value);
+            get => _stockQuantity;
+            set => SetProperty(ref _stockQuantity, value);
         }
 
-        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool isOutOfSeason, Inventory inventory)
+
+        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool isOutOfSeason, int stock)
         {
             ID = id;
             Name = name;
@@ -67,7 +68,7 @@ namespace TradeOps.Model
             Sellingprice = sellingPrice;
             ThresholdLevel = thresholdLevel;
             IsOutOfSeason = isOutOfSeason;
-            ProductInventory = inventory;
+            StockQuantity = stock;
         }
 
         public Product() { }
