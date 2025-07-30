@@ -28,6 +28,7 @@
     <None Remove="Assets\Images\oultine_receipt_64dp_222831%281%29.png" />
     <None Remove="Assets\Images\oultine_settings_64dp_222831%281%29.png" />
     <None Remove="Assets\Images\trolley_64dp_222831.png" />
+    <None Remove="Assets\TrackOps.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,7 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Content Include="Assets\TrackOps.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>

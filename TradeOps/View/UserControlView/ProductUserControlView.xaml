@@ -25,7 +25,7 @@
                  HorizontalAlignment="Left" 
                  FontSize="32"/>
 
-        <Button Grid.Row="0" Grid.Column="4" Content="Add Product" FontWeight="Medium" Background="{StaticResource PrimaryTintBrush4}" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Center" Command="{Binding AddProductCommand}" BorderThickness="0"/>
+        <Button Grid.Row="0" Grid.Column="4" Content="Add Product" FontWeight="Medium" Background="{StaticResource PrimaryTintBrush4}" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Center"  BorderThickness="0"/>
         <!--===================Row 1============================================-->
         <!--Card 1-->
         <Border 
@@ -88,23 +88,32 @@
         </Border>
             <!--MouseDoubleClick="DataGrid_MouseDoubleClick"-->
             <!--===================Row 3============================================-->
-        <DataGrid Grid.Row="2" Grid.ColumnSpan="4"
-          ItemsSource="{Binding Products}"
-          AutoGenerateColumns="False"
-          Margin="10"
-          IsReadOnly="True" SelectionMode="Single"
-                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" >
-           
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width=".7*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="2*"/>
-                <DataGridTextColumn Header="Purchase Price" Binding="{Binding PurchasePrice}" Width="*"/>
-                <DataGridTextColumn Header="Selling Price" Binding="{Binding Sellingprice}" Width="*"/>
-                <DataGridTextColumn Header="Stock" Binding="{Binding ProductInventory.StockQuantity}" Width="*"/>
-                <DataGridTextColumn Header="Threshold" Binding="{Binding ThresholdLevel}" Width="*"/>
-                <DataGridCheckBoxColumn Header="Out of Season" Binding="{Binding IsOutOfSeason}" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+
+        
+            <DataGrid ItemsSource="{Binding Products}" 
+                  SelectedItem="{Binding SelectedProduct}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Grid.Row="2" Grid.ColumnSpan="4"
+                  GridLinesVisibility="Horizontal"
+                  HeadersVisibility="Column"
+                  RowBackground="{StaticResource BackgroundTintBrush7}"
+                  AlternatingRowBackground="{StaticResource BackgroundTintBrush5}"
+                  BorderBrush="{StaticResource BackgroundShadeBrush2}" 
+                  BorderThickness="1"
+                  Margin="0 10"
+                  SelectionMode="Single">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="Auto"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="auto"/>
+                    <DataGridTextColumn Header="Purchase Price" Binding="{Binding PurchasePrice}" Width="Auto"/>
+                    <DataGridTextColumn Header="Selling Price" Binding="{Binding SellingPrice}" Width="Auto"/>
+                    <DataGridTextColumn Header="Threshold" Binding="{Binding ThresholdLevel}" Width="Auto"/>
+                    <DataGridTextColumn Header="Stock" Binding="{Binding StockQuantity}" Width="Auto"/>
+                    <DataGridCheckBoxColumn Header="Tracked" Binding="{Binding IsTracked}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
     </Grid>
     </Border>
 </UserControl>

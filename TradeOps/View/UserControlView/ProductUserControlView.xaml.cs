@@ -23,6 +23,7 @@ namespace TradeOps.View.UserControlView
         public ProductUserControlView()
         {
             InitializeComponent();
+            DataContext = new ViewModel.ProductViewModel();
         }
     }
 }

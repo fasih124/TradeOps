@@ -64,8 +64,8 @@ namespace TradeOps.Model
         {
             if (Product != null)
             {
-                SubProfit = (Product.Sellingprice - Product.PurchasePrice) * Quantity;
-                SubTotal = Product.Sellingprice * Quantity;
+                SubProfit = (Product.SellingPrice - Product.PurchasePrice) * Quantity;
+                SubTotal = Product.SellingPrice * Quantity;
             }
         }
     }

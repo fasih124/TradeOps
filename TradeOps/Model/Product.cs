@@ -32,7 +32,7 @@ namespace TradeOps.Model
         }
 
         private double _sellingPrice;
-        public double Sellingprice
+        public double SellingPrice
         {
             get => _sellingPrice;
             set => SetProperty(ref _sellingPrice, value);
@@ -45,11 +45,11 @@ namespace TradeOps.Model
             set => SetProperty(ref _thresholdLevel, value);
         }
 
-        private bool _isOutOfSeason;
-        public bool IsOutOfSeason
+        private bool isTracked;
+        public bool IsTracked
         {
-            get => _isOutOfSeason;
-            set => SetProperty(ref _isOutOfSeason, value);
+            get => isTracked;
+            set => SetProperty(ref isTracked, value);
         }
 
         private int _stockQuantity;
@@ -60,14 +60,14 @@ namespace TradeOps.Model
         }
 
 
-        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool isOutOfSeason, int stock)
+        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool istrack, int stock)
         {
             ID = id;
             Name = name;
             PurchasePrice = purchasePrice;
-            Sellingprice = sellingPrice;
+            SellingPrice = sellingPrice;
             ThresholdLevel = thresholdLevel;
-            IsOutOfSeason = isOutOfSeason;
+            isTracked = istrack;
             StockQuantity = stock;
         }
 
