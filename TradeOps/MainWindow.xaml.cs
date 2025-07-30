@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TradeOps.View.WindowView;
 
 namespace TradeOps
 {
@@ -19,6 +20,21 @@ namespace TradeOps
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
+        }
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Delay(5000);
+
+            // Open the Login Window
+            LoginWindow login = new LoginWindow();
+            login.Show();
+
+            Application.Current.MainWindow = login;
+            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+            // Close the Splash Screen
+            this.Close();
         }
     }
 }

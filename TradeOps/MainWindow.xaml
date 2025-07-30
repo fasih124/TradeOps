@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TradeOps"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+          Title="MainWindow" Height="450" Width="800" Background="#EEEEEE"  WindowStartupLocation="CenterScreen">
     <Grid>
-
+        <TextBlock Text="Trade Track" Foreground="#00ADB5"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-60,0,0"/>
+        <TextBlock Text="Smart Tools for Smarter Wholesale" FontSize="18"
+                   FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0"/>
     </Grid>
 </Window>
