@@ -1,0 +1,35 @@
+﻿<Window x:Class="TradeOps.View.WindowView.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeOps.View.WindowView"
+        mc:Ignorable="d"
+        Title="AddProductWindow" Height="400" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Product ID" />
+            <TextBox Text="{Binding Product.ID}" />
+
+            <TextBlock Text="Name" />
+            <TextBox Text="{Binding Product.Name}" />
+
+            <TextBlock Text="Purchase Price" />
+            <TextBox Text="{Binding Product.PurchasePrice}" />
+
+            <TextBlock Text="Selling Price" />
+            <TextBox Text="{Binding Product.SellingPrice}" />
+
+            <TextBlock Text="Threshold Level" />
+            <TextBox Text="{Binding Product.ThresholdLevel}" />
+
+            <TextBlock Text="Stock Quantity" />
+            <TextBox Text="{Binding Product.StockQuantity}" />
+
+            <CheckBox Content="Is Tracked" IsChecked="{Binding Product.IsTracked}" />
+
+            <Button Content="Add" Command="{Binding SaveCommand}" Margin="0,10,0,0" />
+        </StackPanel>
+
+    </Grid>
+</Window>
