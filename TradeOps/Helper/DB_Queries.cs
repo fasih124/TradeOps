@@ -48,7 +48,8 @@ namespace TradeOps.Helper
                                 SellingPrice = double.Parse(reader["selling_price"].ToString()),
                                 ThresholdLevel = int.Parse(reader["threshold_Level"].ToString()),
                                 StockQuantity = int.Parse(reader["inventory_Stock"].ToString()),
-                                IsTracked = reader["isTracked"].ToString() == "1"
+                                //IsTracked = reader["isTracked"].ToString() == "1"
+                                IsTracked=Convert.ToBoolean(reader["isTracked"])
                             });
                         }
                     }
@@ -124,7 +125,15 @@ namespace TradeOps.Helper
             }
         }
 
-
+        public static int GetNextProductId()
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                var command = new SQLiteCommand("SELECT IFNULL(MAX(ID), 0) + 1 FROM Product", connection);
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
 
         //===============================
         //Product Related Queries

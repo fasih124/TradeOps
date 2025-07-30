@@ -8,8 +8,9 @@
         Title="AddProductWindow" Height="400" Width="400">
     <Grid>
         <StackPanel Margin="10">
-            <TextBlock Text="Product ID" />
-            <TextBox Text="{Binding Product.ID}" />
+            <!--<TextBlock Text="Product ID" />-->
+            <!--<TextBox Text="{Binding Product.ID}" IsEnabled="False" IsReadOnly="True" />-->
+            <Label Content="{Binding Product.ID}" />
 
             <TextBlock Text="Name" />
             <TextBox Text="{Binding Product.Name}" />

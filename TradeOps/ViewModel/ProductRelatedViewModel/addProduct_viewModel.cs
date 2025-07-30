@@ -21,6 +21,8 @@ namespace TradeOps.ViewModel
 
         public addProduct_viewModel()
         {
+            int nextId = DB_Queries.GetNextProductId();
+            Product = new Product { ID = nextId.ToString() };
             SaveCommand = new RelayCommand(SaveProduct);
         }
         
@@ -37,6 +39,8 @@ namespace TradeOps.ViewModel
                 MessageBox.Show("Error while adding product.");
             }
         }
+
+
 
 
     }
