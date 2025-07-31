@@ -22,7 +22,7 @@
                 <!-- Logout Button -->
             </Grid.RowDefinitions>
 
-            <StackPanel Margin="0,5,0,40">
+            <StackPanel Margin="0,5,0,20">
                 <Image Source="/Assets/Images/oultine_account_circle_64dp_222831(1).png" Width="50" Height="50" Margin="0,0,8,0"/>
                 <TextBlock  Grid.Row="0" Text="Trade Track" Foreground="#393E46" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0" Padding="5"/>
                 <Separator Margin="10,5,10,5" Background="#00ADB5"/>
@@ -32,6 +32,21 @@
             <StackPanel Grid.Row="1">
 
 
+                <Grid Grid.Row="2" Margin="0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Click="NavigationButton_Click" Tag="DashboardView"  Grid.ColumnSpan="2" Background="{StaticResource BackgroundTintBrush2}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   BorderThickness="0" FontSize="16" Padding="10" FontWeight="Bold" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/Images/oultine_receipt_64dp_222831(1).png" Width="25" Height="25" Margin="0,0,8,0"/>
+                            <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
+                
                 <Grid Grid.Row="2" Margin="0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
