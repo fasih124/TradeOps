@@ -33,7 +33,7 @@ namespace TradeOps.View.WindowView
             {
                 //"OrderView" => new OrderUserControl(),
                 "ProductView" => new ProductUserControlView(),
-                //"CustomerView" => new CustomerUserControl(),
+                "CustomerView" => new CustomerUserControlView(),
                 _ => null
             };
 

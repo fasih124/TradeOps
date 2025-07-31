@@ -1,0 +1,26 @@
+﻿<Window x:Class="TradeOps.View.WindowView.CustomerWindow.EditCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeOps.View.WindowView.CustomerWindow"
+        mc:Ignorable="d"
+        Title="Edit Customer" Height="300" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Name" />
+            <TextBox Text="{Binding Customer.Name}" />
+
+            <TextBlock Text="Area" />
+            <TextBox Text="{Binding Customer.Area}" />
+
+            <TextBlock Text="Address" />
+            <TextBox Text="{Binding Customer.Address}" />
+
+            <TextBlock Text="Phone Number" />
+            <TextBox Text="{Binding Customer.PhoneNumber}" />
+            
+            <Button Content="Save" Command="{Binding SaveCommand}" Margin="0,10,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>
