@@ -76,6 +76,20 @@
                     </Button>
 
                 </Grid>
+                <Grid Grid.Row="2" Margin="0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Click="NavigationButton_Click" Tag="InvoicerView"  Grid.ColumnSpan="2" Background="{StaticResource BackgroundTintBrush2}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   BorderThickness="0" FontSize="16" Padding="10" FontWeight="Bold" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/Images/oultine_group_64dp_222831(1).png" Width="25" Height="25" Margin="0,0,8,0"/>
+                            <TextBlock Text="Invoice" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
 
 
             </StackPanel>

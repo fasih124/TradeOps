@@ -7,7 +7,7 @@ using TradeOps.Helper;
 
 namespace TradeOps.Model
 {
-    internal class Invoice : BaseViewModel
+    public class Invoice : BaseViewModel
     {
         private int _id;
         public int ID
@@ -62,6 +62,13 @@ namespace TradeOps.Model
         {
             get => _date;
             set => SetProperty(ref _date, value);
+        }
+
+        private int _orderID;
+        public int OrderID
+        {
+            get => _orderID;
+            set => SetProperty(ref _orderID, value);
         }
 
         private CustomerOrder _customerOrder;

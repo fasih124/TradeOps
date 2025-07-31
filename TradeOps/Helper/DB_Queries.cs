@@ -496,5 +496,34 @@ namespace TradeOps.Helper
         }
 
 
+        //===============================
+        //Invoice Related Queries
+        //================================
+        public static List<Invoice> GetAllInvoices()
+        {
+            var invoices = new List<Invoice>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT * FROM Invoice", con);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                invoices.Add(new Invoice
+                {
+                    ID = Convert.ToInt32(reader["ID"]),
+                    OrderID = Convert.ToInt32(reader["OrderID"]),
+                    TotalPrice = Convert.ToDouble(reader["total_price"]),
+                    TotalProfit = Convert.ToDouble(reader["total_profit"]),
+                    Discount = Convert.ToDouble(reader["discount"]),
+                    IsPaid = Convert.ToInt32(reader["isPaid"]) == 1,
+                    Date = reader["date"].ToString()
+                });
+            }
+
+            return invoices;
+        }
+
     }
 }

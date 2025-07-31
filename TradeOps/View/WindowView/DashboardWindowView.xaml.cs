@@ -34,6 +34,7 @@ namespace TradeOps.View.WindowView
                 "OrderView" => new OrderUserControlView(),
                 "ProductView" => new ProductUserControlView(),
                 "CustomerView" => new CustomerUserControlView(),
+                "InvoicerView" => new InvoiceUserControlView(),
                 _ => null
             };
 
