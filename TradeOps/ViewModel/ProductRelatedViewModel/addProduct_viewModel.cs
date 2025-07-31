@@ -22,7 +22,7 @@ namespace TradeOps.ViewModel
         public addProduct_viewModel()
         {
             int nextId = DB_Queries.GetNextProductId();
-            Product = new Product { ID = nextId.ToString() };
+            Product = new Product { ID = int.Parse(nextId.ToString()) };
             SaveCommand = new RelayCommand(SaveProduct);
         }
         

@@ -42,7 +42,7 @@ namespace TradeOps.Helper
                         {
                             products.Add(new Product
                             {
-                                ID = reader["ID"].ToString(),
+                                ID = int.Parse(reader["ID"].ToString()),
                                 Name = reader["name"].ToString(),
                                 PurchasePrice = double.Parse(reader["purchase_price"].ToString()),
                                 SellingPrice = double.Parse(reader["selling_price"].ToString()),

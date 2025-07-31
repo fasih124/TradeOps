@@ -9,12 +9,25 @@ namespace TradeOps.Model
 {
     internal class OrderDetail : BaseViewModel
     {
-    
         private Product _product;
         public Product Product
         {
             get => _product;
-            set => SetProperty(ref _product, value);
+            set
+            {
+                if (SetProperty(ref _product, value) && value != null)
+                {
+                    ProductID = value.ID;
+                    UpdateCalculatedValues();
+                }
+            }
+        }
+
+        private int _productID;
+        public int ProductID
+        {
+            get => _productID;
+            set => SetProperty(ref _productID, value);
         }
 
         private int _quantity;
@@ -23,12 +36,16 @@ namespace TradeOps.Model
             get => _quantity;
             set
             {
-                if (Product?.StockQuantity >= value)
+                if (Product != null && value >= 0)
                 {
-                    int difference = value - _quantity;
-                    Product.StockQuantity -= difference;
-                    SetProperty(ref _quantity, value);
-                    UpdateCalculatedValues();
+                    int available = Product.StockQuantity + _quantity; // recover previous reserved stock
+
+                    if (value <= available)
+                    {
+                        Product.StockQuantity = available - value;
+                        SetProperty(ref _quantity, value);
+                        UpdateCalculatedValues();
+                    }
                 }
             }
         }
@@ -49,15 +66,10 @@ namespace TradeOps.Model
 
         public OrderDetail(int quantity, Product product)
         {
+            _quantity = 0;
             Product = product;
 
-            if (product.StockQuantity >= quantity)
-            {
-                Quantity = quantity;
-                product.StockQuantity -= quantity;
-            }
-
-            UpdateCalculatedValues();
+            Quantity = quantity; // Will auto-update stock and calculations
         }
 
         private void UpdateCalculatedValues()
@@ -69,4 +81,5 @@ namespace TradeOps.Model
             }
         }
     }
+
 }

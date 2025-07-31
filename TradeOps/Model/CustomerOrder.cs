@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TradeOps.Helper;
+using TradeOps.Model;
 
 namespace TradeOps.Model
 {
@@ -17,6 +18,15 @@ namespace TradeOps.Model
             set => SetProperty(ref _id, value);
         }
 
+        private bool _isCompleted;
+
+        public bool IsCompleted
+        {
+            get { return _isCompleted; }
+            set { _isCompleted = value; }
+        }
+
+
         private string _date;
         public string Date
         {
@@ -24,19 +34,28 @@ namespace TradeOps.Model
             set => SetProperty(ref _date, value);
         }
 
+
+        // Foreign Key: Helpful for database operations
+        private int _customerID;
+        public int CustomerID
+        {
+            get => _customerID;
+            set => SetProperty(ref _customerID, value);
+        }
+
         private Customer _customer;
         public Customer Customer
         {
             get => _customer;
-            set => SetProperty(ref _customer, value);
+            set
+            {
+                if (SetProperty(ref _customer, value) && value != null)
+                {
+                    CustomerID = value.ID;
+                }
+            }
         }
 
-        private Invoice _customerInvoice;
-        public Invoice CustomerInvoice
-        {
-            get => _customerInvoice;
-            set => SetProperty(ref _customerInvoice, value);
-        }
 
         private ObservableCollection<OrderDetail> _productDetails;
         public ObservableCollection<OrderDetail> ProductDetails
@@ -45,13 +64,23 @@ namespace TradeOps.Model
             set => SetProperty(ref _productDetails, value);
         }
 
-        public CustomerOrder(int id, string date, Customer customer)
+
+        public CustomerOrder(int id, string date, bool isCompleted, Customer customer)
         {
             ID = id;
             Date = date;
+            IsCompleted = isCompleted;
             Customer = customer;
+            CustomerID = customer?.ID ?? 0;
+            ProductDetails = new ObservableCollection<OrderDetail>();
+        }
+
+        public CustomerOrder()
+        {
             ProductDetails = new ObservableCollection<OrderDetail>();
         }
 
     }
 }
+
+

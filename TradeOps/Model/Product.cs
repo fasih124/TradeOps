@@ -10,8 +10,8 @@ namespace TradeOps.Model
 {
     internal class Product : BaseViewModel
     {
-        private string _id;
-        public string ID
+        private int _id;
+        public int ID
         {
             get => _id;
             set => SetProperty(ref _id, value);
@@ -60,7 +60,7 @@ namespace TradeOps.Model
         }
 
 
-        public Product(string id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool istrack, int stock)
+        public Product(int id, string name, double purchasePrice, double sellingPrice, int thresholdLevel, bool istrack, int stock)
         {
             ID = id;
             Name = name;
