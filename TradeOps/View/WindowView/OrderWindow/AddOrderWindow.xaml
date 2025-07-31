@@ -1,0 +1,134 @@
+﻿<Window x:Class="TradeOps.View.WindowView.OrderWindow.AddOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeOps.View.WindowView.OrderWindow"
+        mc:Ignorable="d"
+        Title="Add Order" Height="450" Width="800">
+    
+    <!--<Grid Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        --><!-- Header and Customer Selection --><!--
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock Text="Create New Order" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,5">
+                <TextBlock Text="Customer:" VerticalAlignment="Center" Width="100" />
+                <ComboBox ItemsSource="{Binding Customers}"
+                          SelectedItem="{Binding SelectedCustomer}"
+                          DisplayMemberPath="Name"
+                          Width="250"/>
+            </StackPanel>
+
+            --><!-- Product & Quantity Selection --><!--
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Product:" VerticalAlignment="Center" Width="100" />
+                <ComboBox ItemsSource="{Binding Products}"
+                          SelectedItem="{Binding SelectedProduct}"
+                          DisplayMemberPath="Name"
+                          Width="250" Margin="0,0,10,0"/>
+
+                <TextBlock Text="Quantity:" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Quantity}" Width="60" Margin="5,0" />
+
+                <Button Content="Add" Command="{Binding AddProductCommand}" Margin="10,0" />
+            </StackPanel>
+        </StackPanel>
+
+        --><!-- Product List --><!--
+        <DataGrid Grid.Row="1" ItemsSource="{Binding OrderDetails}" AutoGenerateColumns="False" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product" Binding="{Binding Product.Name}" Width="*" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Product.SellingPrice}" Width="100" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="100" />
+                <DataGridTextColumn Header="Subtotal" Binding="{Binding SubTotal}" Width="100" />
+                <DataGridTextColumn Header="Profit" Binding="{Binding SubProfit}" Width="100" />
+                <DataGridTemplateColumn Header="Remove" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="❌" Command="{Binding DataContext.RemoveProductCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        --><!-- Total and Actions --><!--
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Total: " FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="{Binding OrderTotal}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+            <Button Content="Finalize Order" Command="{Binding FinalizeOrderCommand}" Width="120" Margin="0,0,10,0"/>
+            <Button Content="Cancel"  Width="80"/>
+            --><!--<Button Content="Cancel" Click="Cancel_Click" Width="80"/>--><!--
+        </StackPanel>
+
+    </Grid>-->
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Select Customer -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Customer:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <ComboBox Width="200"   
+                      ItemsSource="{Binding Customers}"
+                      SelectedItem="{Binding SelectedCustomer  ,Mode=TwoWay}"
+                      DisplayMemberPath="Name"  
+                      />
+        </StackPanel>
+
+        <!-- Select Product and Quantity -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Product:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <ComboBox Width="200"
+                      ItemsSource="{Binding Products}"
+                      SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                      DisplayMemberPath="Name"
+                      Margin="0,0,10,0"/>
+
+            <TextBlock Text="Quantity:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox Width="100" Text="{Binding EnteredQuantity}" Margin="0,0,10,0"/>
+
+            <Button Content="Add Product" Command="{Binding AddProductCommand}" />
+        </StackPanel>
+
+        <!-- Order Details Table -->
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" ItemsSource="{Binding CurrentOrderDetails}" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product" Binding="{Binding Product.Name}" Width="*"/>
+                <DataGridTextColumn Header="Qty" Binding="{Binding Quantity}" Width="60"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Product.SellingPrice}" Width="80"/>
+                <DataGridTextColumn Header="Subtotal" Binding="{Binding SubTotal}" Width="100"/>
+                <DataGridTextColumn Header="Profit" Binding="{Binding SubProfit}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Summary and Save -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <TextBlock Text="Total Qty:" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding TotalQuantity}" Width="50" Margin="0,0,15,0"/>
+
+            <TextBlock Text="Subtotal:" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding TotalAmount}" Width="80" Margin="0,0,15,0"/>
+
+            <TextBlock Text="Profit:" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding TotalProfit}" Width="80" Margin="0,0,15,0"/>
+
+            <Button Content="Save Order" Command="{Binding SaveOrderCommand}" Width="120"/>
+        </StackPanel>
+    </Grid>
+    
+</Window>

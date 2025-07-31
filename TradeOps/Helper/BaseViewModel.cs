@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TradeOps.Helper
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

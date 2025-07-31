@@ -7,7 +7,7 @@ using TradeOps.Helper;
 
 namespace TradeOps.Model
 {
-    internal class OrderDetail : BaseViewModel
+    public class OrderDetail : BaseViewModel
     {
         private Product _product;
         public Product Product
@@ -71,7 +71,7 @@ namespace TradeOps.Model
 
             Quantity = quantity; // Will auto-update stock and calculations
         }
-
+        public OrderDetail() { } 
         private void UpdateCalculatedValues()
         {
             if (Product != null)

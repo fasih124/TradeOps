@@ -70,7 +70,11 @@ namespace TradeOps.ViewModel
 
         private void EditSelectedProduct(object obj)
         {
-            if (SelectedProduct == null) return;
+            if (SelectedProduct == null)
+            {
+                MessageBox.Show("Please select a product to Edit.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             var editWindow = new EditProductWindow();
             editWindow.DataContext = new EditProduct_ViewModel(SelectedProduct, editWindow);

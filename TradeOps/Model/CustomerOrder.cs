@@ -9,7 +9,7 @@ using TradeOps.Model;
 
 namespace TradeOps.Model
 {
-    internal class CustomerOrder : BaseViewModel
+    public class CustomerOrder : BaseViewModel
     {
         private int _id;
         public int ID

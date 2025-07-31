@@ -7,7 +7,7 @@ using TradeOps.Helper;
 
 namespace TradeOps.Model
 {
-    internal class Customer : BaseViewModel
+    public class Customer : BaseViewModel
     {
    
         private int _id;

@@ -1,0 +1,25 @@
+﻿<Window x:Class="TradeOps.View.WindowView.OrderWindow.DetailOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeOps.View.WindowView.OrderWindow"
+        mc:Ignorable="d"
+      Title="Order Details" Height="400" Width="600">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="{Binding customer.Name}" FontWeight="Bold" FontSize="16" />
+            <TextBlock Text="{Binding Date}" />
+            <TextBlock Text="Order Items:" FontWeight="Bold" Margin="0,10,0,0" />
+
+            <DataGrid ItemsSource="{Binding ProductDetails}" AutoGenerateColumns="False" Height="200">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Product" Binding="{Binding Product.Name}" />
+                    <DataGridTextColumn Header="Qty" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal}" />
+                    <DataGridTextColumn Header="SubProfit" Binding="{Binding SubProfit}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

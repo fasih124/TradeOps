@@ -31,7 +31,7 @@ namespace TradeOps.View.WindowView
 
             System.Windows.Controls.UserControl view = viewName switch
             {
-                //"OrderView" => new OrderUserControl(),
+                "OrderView" => new OrderUserControlView(),
                 "ProductView" => new ProductUserControlView(),
                 "CustomerView" => new CustomerUserControlView(),
                 _ => null
