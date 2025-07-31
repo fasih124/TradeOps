@@ -136,6 +136,118 @@ namespace TradeOps.Helper
         }
 
         //===============================
+        //customer Related Queries
+        //================================
+
+        public static ObservableCollection<Customer> GetAllCustomers()
+        {
+            var customers = new ObservableCollection<Customer>();
+
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Customer";
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customers.Add(new Customer
+                            {
+                                ID = Convert.ToInt32(reader["ID"]),
+                                Name = reader["name"].ToString(),
+                                Address = reader["address"].ToString(),
+                                Area = reader["area"].ToString(),
+                                PhoneNumber = reader["phone_number"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("DB ERROR: " + ex.Message);
+            }
+
+            return customers;
+        }
+
+
+        public static bool InsertCustomer(Customer customer)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Customer (ID, name, address, area, phone_number)
+                             VALUES (@ID, @Name, @Address, @Area, @PhoneNumber)";
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", customer.ID);
+                        command.Parameters.AddWithValue("@Name", customer.Name);
+                        command.Parameters.AddWithValue("@Address", customer.Address);
+                        command.Parameters.AddWithValue("@Area", customer.Area);
+                        command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Insert ERROR: " + ex.Message);
+                return false;
+            }
+        }
+
+
+        public static void UpdateCustomer(Customer customer)
+        {
+            using (var con = GetConnection())
+            {
+                con.Open();
+                var cmd = new SQLiteCommand("UPDATE Customer SET name = @Name, address = @Address, area = @Area, phone_number = @PhoneNumber WHERE ID = @ID", con);
+
+                cmd.Parameters.AddWithValue("@Name", customer.Name);
+                cmd.Parameters.AddWithValue("@Address", customer.Address);
+                cmd.Parameters.AddWithValue("@Area", customer.Area);
+                cmd.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+                cmd.Parameters.AddWithValue("@ID", customer.ID);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public static void DeleteCustomer(Customer customer)
+        {
+            using (var con = GetConnection())
+            {
+                con.Open();
+                var cmd = new SQLiteCommand("DELETE FROM Customer WHERE ID = @ID", con);
+                cmd.Parameters.AddWithValue("@ID", customer.ID);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public static int GetNextCustomerId()
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                var command = new SQLiteCommand("SELECT IFNULL(MAX(ID), 0) + 1 FROM Customer", connection);
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        //===============================
         //Product Related Queries
         //================================
 
