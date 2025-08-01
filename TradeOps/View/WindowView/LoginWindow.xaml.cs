@@ -25,15 +25,31 @@ namespace TradeOps.View.WindowView
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Window Dashboard = new View.WindowView.DashboardWindowView();
-            Dashboard.Show();
+            // Get the password entered by the user
+            string enteredPassword = PasswordInput.Password;
 
-            // Set ShutdownMode to close app when dashboard is closed
-            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-            Application.Current.MainWindow = Dashboard;
+            // Replace with your actual check (e.g., compare with database, config, etc.)
+            string correctPassword = "12345";
 
-            // Close Login
-            this.Close();
+
+
+            if (enteredPassword == correctPassword)
+            {
+                Window Dashboard = new View.WindowView.DashboardWindowView();
+                Dashboard.Show();
+
+                // Set ShutdownMode to close app when dashboard is closed
+                Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                Application.Current.MainWindow = Dashboard;
+
+                // Close Login
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials, please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
 
 
         }

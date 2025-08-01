@@ -4,11 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TradeOps.View.WindowView"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="LoginWindow"
     Width="800"
     Height="450"
     WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
         <TextBlock
@@ -23,26 +25,31 @@
             Margin="0,100,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
+
+
             <PasswordBox
                 x:Name="PasswordInput"
-                Width="200"
-                Height="30"
-                Margin="0,0,0,10"
+                Width="250"
+                Margin="10"
                 Padding="5"
-                VerticalContentAlignment="Center"
-                Background="White"
-                BorderBrush="#393E46"
-                Foreground="Black" />
+                materialDesign:HintAssist.Hint="Password"
+                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource PrimaryHueMidBrush}"
+                FontSize="16"
+                Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+            <!--  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />  -->
 
             <Button
-                Width="200"
-                Height="30"
-                Background="#00ADB5"
+                Width="250"
+                Height="40"
+                Margin="10"
                 Click="Button_Click"
+                Command="{Binding LoginCommand}"
                 Content="Login"
-                FontSize="14"
+                FontSize="16"
                 FontWeight="Bold"
-                Foreground="White" />
+                Foreground="White"
+                Style="{StaticResource MaterialDesignRaisedButton}" />
         </StackPanel>
 
 
