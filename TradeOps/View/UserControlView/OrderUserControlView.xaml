@@ -11,9 +11,9 @@
     <Border
         Margin="20"
         Padding="10"
-        Background="{StaticResource BackgroundTintBrush7}"
+        Background="{StaticResource AppBackgroundTintBrush7}"
         CornerRadius="6">
-        <Grid Background="{StaticResource BackgroundTintBrush7}">
+        <Grid Background="{StaticResource AppBackgroundTintBrush7}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
@@ -47,7 +47,7 @@
             <Button
                 Grid.Row="0"
                 Grid.Column="3"
-                Background="{StaticResource PrimaryTintBrush4}"
+                Background="{StaticResource AppPrimaryTintBrush4}"
                 BorderThickness="0"
                 Command="{Binding OpenAddOrderWindowCommand}"
                 Content="Generate Order"

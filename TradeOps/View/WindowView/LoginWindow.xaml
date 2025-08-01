@@ -9,23 +9,31 @@
     Title="LoginWindow"
     Width="800"
     Height="450"
+    FontFamily="{materialDesign:MaterialDesignFont}"
+    Style="{StaticResource MaterialDesignWindow}"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
         <TextBlock
-            Margin="0,-100,0,0"
+            Margin="0,-130,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="40"
             FontWeight="Bold"
             Text="Welcome to Trade Track" />
+        <TextBlock
+            Margin="0,-70,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            FontWeight="Regular"
+            Text="Enter Admin Password To Login" />
 
         <StackPanel
             Margin="0,100,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-
 
             <PasswordBox
                 x:Name="PasswordInput"
@@ -48,10 +56,9 @@
                 Content="Login"
                 FontSize="16"
                 FontWeight="Bold"
-                Foreground="White"
                 Style="{StaticResource MaterialDesignRaisedButton}" />
         </StackPanel>
 
-
+        <!--  Foreground="White"  -->
     </Grid>
 </Window>

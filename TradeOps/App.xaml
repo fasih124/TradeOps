@@ -8,13 +8,20 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+
+                <!--  🔄 Use MaterialDesign3 theme  -->
                 <materialDesign:BundledTheme
                     BaseTheme="Light"
                     PrimaryColor="Teal"
                     SecondaryColor="Cyan" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+
+                <!--  ✅ Use the correct v3 defaults  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+
+                <!--  ✅ Your custom resources  -->
                 <ResourceDictionary Source="/Assets/Resources/AppColorsDictionary.xaml" />
                 <!--<ResourceDictionary Source="/Assets/Resources/AppTextStyleDictionary.xaml" />-->
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

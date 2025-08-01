@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TradeOps.Helper;
 using TradeOps.View.UserControlView;
 
 namespace TradeOps.View.WindowView
@@ -23,24 +26,89 @@ namespace TradeOps.View.WindowView
         public DashboardWindowView()
         {
             InitializeComponent();
+            MainContent.Content = new DashboardUserControlView();
+            NavigationListBox.ItemsSource = GetSampleItems();
         }
-        private void NavigationButton_Click(object sender, RoutedEventArgs e)
+
+        private ObservableCollection<SampleItem> GetSampleItems()
         {
-            var button = sender as Button;
-            string viewName = button?.Tag?.ToString();
-
-            System.Windows.Controls.UserControl view = viewName switch
+            return new ObservableCollection<SampleItem>
             {
-                "DashboardView" => new DashboardUserControlView(),
-                "OrderView" => new OrderUserControlView(),
-                "ProductView" => new ProductUserControlView(),
-                "CustomerView" => new CustomerUserControlView(),
-                "InvoicerView" => new InvoiceUserControlView(),
-                _ => null
+                new SampleItem
+                {
+                    Title = "Dashboard",
+                    Notification = 1,
+                    SelectedIcon = PackIconKind.ViewDashboard,
+                    UnselectedIcon = PackIconKind.ViewDashboardOutline
+                },
+                new SampleItem
+                {
+                    Title = "Orders",
+                    Notification = 2,
+                    SelectedIcon = PackIconKind.Cart,
+                    UnselectedIcon = PackIconKind.CartOutline
+                },
+                new SampleItem
+                {
+                    Title = "Product",
+                    Notification = 0,
+                    SelectedIcon = PackIconKind.PackageVariant,
+                    UnselectedIcon = PackIconKind.PackageVariantClosed
+                },
+                new SampleItem
+                {
+                    Title = "Customer",
+                    Notification = 0,
+                    SelectedIcon = PackIconKind.AccountMultiple,
+                    UnselectedIcon =  PackIconKind.AccountMultipleOutline
+                },
+                new SampleItem
+                {
+                    Title = "Invoice",
+                    Notification = 0,
+                    SelectedIcon = PackIconKind.InvoiceMultiple,
+                    UnselectedIcon = PackIconKind.InvoiceMultipleOutline
+                },
             };
+        }
 
-            if (view != null)
-                MainContent.Content = view;
+        private void NavigationListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (NavigationListBox.SelectedItem is SampleItem selectedItem)
+            {
+                switch (selectedItem.Title)
+                {
+                    case "Dashboard":
+                        MainContent.Content = new DashboardUserControlView(); 
+                        break;
+                    case "Orders":
+                        MainContent.Content = new OrderUserControlView();
+                        break;
+                    case "Product":
+                        MainContent.Content = new ProductUserControlView();
+                        break;
+                    case "Customer":
+                        MainContent.Content = new CustomerUserControlView();
+                        break;
+                    case "Invoice":
+                        MainContent.Content = new InvoiceUserControlView();
+                        break;
+                    default:
+                        MainContent.Content = new DashboardUserControlView();
+                        break;
+                }
+            }
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            var login = new LoginWindow();
+            Application.Current.MainWindow = login; // Set new MainWindow
+            login.Show();
+            this.Close();
+
         }
     }
+
+
 }

@@ -11,9 +11,9 @@
     <Border
         Margin="20"
         Padding="10"
-        Background="{StaticResource BackgroundTintBrush7}"
+        Background="{StaticResource AppBackgroundTintBrush7}"
         CornerRadius="6">
-        <Grid Background="{StaticResource BackgroundTintBrush7}">
+        <Grid Background="{StaticResource AppBackgroundTintBrush7}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
@@ -48,7 +48,7 @@
                 Grid.Column="3"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                Background="{StaticResource PrimaryTintBrush4}"
+                Background="{StaticResource AppPrimaryTintBrush4}"
                 BorderThickness="0"
                 Command="{Binding OpenAddWindowCommand}"
                 Content="Add Product"
@@ -169,15 +169,15 @@
                 Grid.Row="2"
                 Grid.ColumnSpan="4"
                 Margin="0,10"
-                AlternatingRowBackground="{StaticResource BackgroundTintBrush5}"
+                AlternatingRowBackground="{StaticResource AppBackgroundTintBrush5}"
                 AutoGenerateColumns="False"
-                BorderBrush="{StaticResource BackgroundShadeBrush2}"
+                BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
                 BorderThickness="1"
                 GridLinesVisibility="Horizontal"
                 HeadersVisibility="Column"
                 IsReadOnly="True"
                 ItemsSource="{Binding Products}"
-                RowBackground="{StaticResource BackgroundTintBrush7}"
+                RowBackground="{StaticResource AppBackgroundTintBrush7}"
                 SelectedItem="{Binding SelectedProduct}"
                 SelectionMode="Single">
 
