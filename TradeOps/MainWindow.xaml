@@ -1,14 +1,31 @@
-﻿<Window x:Class="TradeOps.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TradeOps"
-        mc:Ignorable="d"
-          Title="MainWindow" Height="450" Width="800" Background="#EEEEEE"  WindowStartupLocation="CenterScreen">
+﻿<Window
+    x:Class="TradeOps.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TradeOps"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Background="#EEEEEE"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Grid>
-        <TextBlock Text="Trade Track" Foreground="#00ADB5"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-60,0,0"/>
-        <TextBlock Text="Smart Tools for Smarter Wholesale" FontSize="18"
-                   FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0"/>
+        <TextBlock
+            Margin="0,-60,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="36"
+            FontWeight="Bold"
+            Foreground="#00ADB5"
+            Text="Trade Track" />
+        <TextBlock
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="18"
+            FontWeight="Normal"
+            Text="Smart Tools for Smarter Wholesale" />
     </Grid>
 </Window>

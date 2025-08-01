@@ -24,7 +24,7 @@ namespace TradeOps
         }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Delay(5000);
+            await Task.Delay(2000);
 
             // Open the Login Window
             LoginWindow login = new LoginWindow();
