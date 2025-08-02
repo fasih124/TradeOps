@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:TradeOps.View.WindowView"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="AddProductWindow"
+    Title="Add Product"
     Width="400"
-    Height="400"
+    Height="500"
     FontFamily="{materialDesign:MaterialDesignFont}"
     Style="{StaticResource MaterialDesignWindow}"
     mc:Ignorable="d">
@@ -18,25 +18,46 @@
             <!--<TextBox Text="{Binding Product.ID}" IsEnabled="False" IsReadOnly="True" />-->
             <Label Content="{Binding Product.ID}" />
 
-            <TextBlock Text="Name" />
-            <TextBox Text="{Binding Product.Name}" />
 
-            <TextBlock Text="Purchase Price" />
-            <TextBox Text="{Binding Product.PurchasePrice}" />
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Name"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Product.Name}" />
 
-            <TextBlock Text="Selling Price" />
-            <TextBox Text="{Binding Product.SellingPrice}" />
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Purchase Price"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Product.PurchasePrice}" />
 
-            <TextBlock Text="Threshold Level" />
-            <TextBox Text="{Binding Product.ThresholdLevel}" />
 
-            <TextBlock Text="Stock Quantity" />
-            <TextBox Text="{Binding Product.StockQuantity}" />
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Selling Price"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Product.SellingPrice}" />
 
-            <CheckBox Content="Is Tracked" IsChecked="{Binding Product.IsTracked}" />
+
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Threshold Level"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Product.ThresholdLevel}" />
+
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Stock Quantity"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Product.StockQuantity}" />
+
+            <CheckBox
+                Margin="10"
+                Content="Is Tracked"
+                IsChecked="{Binding Product.IsTracked}" />
 
             <Button
-                Margin="0,10,0,0"
+                Margin="10"
                 Command="{Binding SaveCommand}"
                 Content="Add" />
         </StackPanel>
