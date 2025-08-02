@@ -27,12 +27,25 @@
             <DataGrid
                 Height="200"
                 AutoGenerateColumns="False"
+                IsReadOnly="True"
                 ItemsSource="{Binding ProductDetails}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Product.Name}" Header="Product" />
-                    <DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" />
-                    <DataGridTextColumn Binding="{Binding SubTotal}" Header="SubTotal" />
-                    <DataGridTextColumn Binding="{Binding SubProfit}" Header="SubProfit" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Product.Name}"
+                        Header="Product" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Quantity}"
+                        Header="Qty" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding SubTotal}"
+                        Header="SubTotal" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding SubProfit}"
+                        Header="SubProfit" />
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

@@ -2,15 +2,130 @@
     x:Class="TradeOps.View.WindowView.OrderWindow.EditOrderWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TradeOps.View.WindowView.OrderWindow"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="EditOrderWindow"
+    Title="Edit Order"
     Width="800"
-    Height="450"
-    FontFamily="{materialDesign:MaterialDesignFont}"
-    Style="{StaticResource MaterialDesignWindow}"
-    mc:Ignorable="d">
-    <Grid />
+    Height="600"
+    DataContext="{Binding}"
+    WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Select Customer  -->
+        <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Customer:" />
+            <ComboBox
+                Width="200"
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Customers}"
+                SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
+        </StackPanel>
+
+        <!--  Select Product and Quantity  -->
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,0,0,10"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Product:" />
+            <ComboBox
+                Width="200"
+                Margin="0,0,10,0"
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Products}"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
+
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Quantity:" />
+            <TextBox
+                Width="100"
+                Margin="0,0,10,0"
+                Text="{Binding EnteredQuantity}" />
+
+            <Button Command="{Binding AddProductCommand}" Content="Add Product" />
+        </StackPanel>
+
+        <!--  Order Details Table  -->
+        <DataGrid
+            Grid.Row="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            ItemsSource="{Binding CurrentOrderDetails}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Product.Name}"
+                    Header="Product" />
+                <DataGridTextColumn
+                    Width="60"
+                    Binding="{Binding Quantity}"
+                    Header="Qty" />
+                <DataGridTextColumn
+                    Width="80"
+                    Binding="{Binding Product.SellingPrice}"
+                    Header="Price" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding SubTotal}"
+                    Header="Subtotal" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding SubProfit}"
+                    Header="Profit" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--  Summary and Save  -->
+        <StackPanel
+            Grid.Row="3"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Total Qty:" />
+            <TextBlock
+                Width="50"
+                Margin="0,0,15,0"
+                Text="{Binding TotalQuantity}" />
+
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Subtotal:" />
+            <TextBlock
+                Width="80"
+                Margin="0,0,15,0"
+                Text="{Binding TotalAmount}" />
+
+            <TextBlock
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                Text="Profit:" />
+            <TextBlock
+                Width="80"
+                Margin="0,0,15,0"
+                Text="{Binding TotalProfit}" />
+
+            <Button
+                Width="120"
+                Command="{Binding SaveOrderCommand}"
+                Content="Save Order" />
+        </StackPanel>
+    </Grid>
+
 </Window>

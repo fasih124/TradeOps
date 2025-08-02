@@ -37,12 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\TrackOps.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />

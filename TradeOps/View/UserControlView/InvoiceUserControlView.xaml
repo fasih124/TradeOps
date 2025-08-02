@@ -51,9 +51,10 @@
                     Width="120"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
-                    SelectedItem="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValue="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
-                    <ComboBoxItem Content="ID" />
+                    <ComboBoxItem Content="Invoice ID" />
                     <ComboBoxItem Content="Order ID" />
                     <ComboBoxItem Content="Date" />
 
@@ -63,9 +64,9 @@
                 <TextBox
                     Grid.Column="2"
                     Padding="5"
-                    materialDesign:HintAssist.Hint="Enter search term"
+                    materialDesign:HintAssist.Hint="Enter search ..."
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <!--  row3  -->
             <DataGrid

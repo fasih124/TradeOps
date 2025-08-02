@@ -15,6 +15,32 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
 {
     internal class CustomerViewModel: BaseViewModel
     {
+        private List<Customer> _allCustomers;
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                if (SetProperty(ref _searchText, value))
+                    FilterCustomers();
+            }
+        }
+
+        private string _searchType;
+        public string SearchType
+        {
+            get => _searchType;
+            set
+            {
+                if (SetProperty(ref _searchType, value))
+                    FilterCustomers();
+            }
+        }
+
+
+
         private ObservableCollection<Customer> _customers;
         public ObservableCollection<Customer> Customers
         {
@@ -32,8 +58,11 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
         // check
         public CustomerViewModel()
         {
-            System.Diagnostics.Debug.WriteLine($"this excute.");
-            LoadProducts();
+            SearchType = "ID";
+            LoadCustomers();
+            FilterCustomers();
+
+            System.Diagnostics.Debug.WriteLine($"this excute.");       
             OpenAddWindowCommand = new RelayCommand(OpenAddCustomerWindow);
             EditCommand = new RelayCommand(EditSelectedCustomer);
             DeleteCommand = new RelayCommand(DeleteSelectedCustomer);
@@ -41,10 +70,48 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
 
 
 
-        public void LoadProducts()
+        public void LoadCustomers()
         {
-            Customers = DB_Queries.GetAllCustomers();
-            System.Diagnostics.Debug.WriteLine($"Loaded {Customers.Count} products.");
+            _allCustomers = DB_Queries.GetAllCustomers().ToList();
+            Customers = new ObservableCollection<Customer>(_allCustomers);
+            System.Diagnostics.Debug.WriteLine($"Loaded {Customers.Count} customer.");
+        }
+
+
+        private void FilterCustomers()
+        {
+            if (_allCustomers == null)
+                return;
+
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                Customers = new ObservableCollection<Customer>(_allCustomers);
+                return;
+            }
+
+            string filter = SearchText.Trim().ToLower();
+            IEnumerable<Customer> filtered;
+
+            switch (SearchType)
+            {
+                case "ID":
+                    filtered = _allCustomers.Where(c => c.ID.ToString().Contains(filter));
+                    break;
+                case "Name":
+                    filtered = _allCustomers.Where(c => c.Name != null && c.Name.ToLower().Contains(filter));
+                    break;
+                case "Area":
+                    filtered = _allCustomers.Where(c => c.Area != null && c.Area.ToLower().Contains(filter));
+                    break;
+                case "PhoneNumber":
+                    filtered = _allCustomers.Where(c => c.PhoneNumber != null && c.PhoneNumber.ToLower().Contains(filter));
+                    break;
+                default:
+                    filtered = _allCustomers;
+                    break;
+            }
+
+            Customers = new ObservableCollection<Customer>(filtered);
         }
 
         // add product window
@@ -57,9 +124,7 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
             var window = new AddCustomerWindow();
             window.ShowDialog();
 
-            // Optionally refresh product list after closing
-            Customers = DB_Queries.GetAllCustomers();
-            OnPropertyChanged(nameof(Customers));
+            LoadCustomers(); // reload to refresh list
         }
 
 
@@ -81,7 +146,7 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
             editWindow.DataContext = new EditCustomer_ViewModel(SelectedCustomer, editWindow);
             editWindow.ShowDialog();
 
-            LoadProducts(); // reload to refresh list
+            LoadCustomers(); // reload to refresh list
         }
 
 
@@ -99,7 +164,7 @@ namespace TradeOps.ViewModel.CustomerRelatedViewModel
             if (result == MessageBoxResult.Yes)
             {
                 DB_Queries.DeleteCustomer(SelectedCustomer);
-                LoadProducts(); // Refresh the product list
+                LoadCustomers(); // Refresh the product list
             }
         }
     }

@@ -40,7 +40,7 @@
                 Background="#ffffff"
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteOrderCommand}"
-                Content="Delete Selected Order"
+                Content="Delete Order"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
 
 
@@ -89,12 +89,12 @@
                     Width="120"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
-                    SelectedItem="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValue="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
                     <ComboBoxItem Content="ID" />
                     <ComboBoxItem Content="Name" />
                     <ComboBoxItem Content="Date" />
-                    <ComboBoxItem Content="Amount" />
                 </ComboBox>
                 <TextBox
                     Grid.Column="2"
@@ -114,7 +114,7 @@
                 Grid.ColumnSpan="4"
                 Margin="0,10"
                 AutoGenerateColumns="False"
-                BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
+                BorderBrush="white"
                 BorderThickness="1"
                 CanUserAddRows="False"
                 GridLinesVisibility="Horizontal"

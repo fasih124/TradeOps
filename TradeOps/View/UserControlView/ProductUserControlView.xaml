@@ -74,14 +74,14 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="10" />
                     <!--  spacing  -->
-                    <ColumnDefinition Width="29*" />
-                    <ColumnDefinition Width="617*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <!--  ComboBox: Search by ID or Name  -->
                 <ComboBox
                     Grid.Column="0"
                     Width="120"
+                    Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
                     SelectedValue="{Binding SearchType, Mode=TwoWay}"
                     SelectedValuePath="Content"
