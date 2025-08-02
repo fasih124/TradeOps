@@ -10,23 +10,115 @@
     d:DesignWidth="800"
     FontFamily="{materialDesign:MaterialDesignFont}"
     mc:Ignorable="d">
-    <Grid Margin="10" Background="{DynamicResource MaterialDesignPaper}">
-        <DataGrid
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
-            ItemsSource="{Binding Invoices}"
-            SelectedItem="{Binding SelectedInvoice}"
-            SelectionMode="Single">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="Invoice ID" />
-                <DataGridTextColumn Binding="{Binding OrderID}" Header="Order ID" />
-                <DataGridTextColumn Binding="{Binding TotalPrice}" Header="Total Price" />
-                <DataGridTextColumn Binding="{Binding TotalProfit}" Header="Profit" />
-                <DataGridTextColumn Binding="{Binding Discount}" Header="Discount" />
-                <DataGridTextColumn Binding="{Binding IsPaid}" Header="Paid" />
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
-                <DataGridTextColumn Binding="{Binding Date}" Header="Action" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <Border
+        Padding="10"
+        Background="white"
+        CornerRadius="6">
+        <Grid Background="white">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!--  row 1  -->
+            <TextBlock
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="32"
+                Text="Invoice" />
+            <!--  row2  -->
+            <Grid
+                Grid.Row="1"
+                Grid.ColumnSpan="4"
+                Margin="2,17"
+                HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <!--  spacing  -->
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  ComboBox: Search by ID or Name  -->
+                <ComboBox
+                    Grid.Column="0"
+                    Width="120"
+                    Padding="5"
+                    materialDesign:HintAssist.Hint="Search by"
+                    SelectedItem="{Binding SearchType, Mode=TwoWay}"
+                    Style="{StaticResource MaterialDesignFilledComboBox}">
+                    <ComboBoxItem Content="ID" />
+                    <ComboBoxItem Content="Order ID" />
+                    <ComboBoxItem Content="Date" />
+
+                </ComboBox>
+
+                <!--  TextBox: Search input  -->
+                <TextBox
+                    Grid.Column="2"
+                    Padding="5"
+                    materialDesign:HintAssist.Hint="Enter search term"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <!--  row3  -->
+            <DataGrid
+                Grid.Row="2"
+                Grid.ColumnSpan="4"
+                Margin="0,0"
+                AutoGenerateColumns="False"
+                BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
+                BorderThickness="1"
+                CanUserAddRows="False"
+                GridLinesVisibility="Horizontal"
+                HeadersVisibility="Column"
+                HorizontalGridLinesBrush="#10000000"
+                IsReadOnly="True"
+                ItemsSource="{Binding Invoices}"
+                RowBackground="white"
+                SelectedItem="{Binding SelectedInvoice}"
+                SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding ID}"
+                        Header="Invoice ID" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding OrderID}"
+                        Header="Order ID" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding TotalPrice}"
+                        Header="Total Price" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding TotalProfit}"
+                        Header="Profit" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Discount}"
+                        Header="Discount" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding IsPaid}"
+                        Header="Paid" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Date}"
+                        Header="Date" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Date}"
+                        Header="Action" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
 </UserControl>

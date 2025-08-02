@@ -10,6 +10,114 @@
     d:DesignWidth="800"
     FontFamily="{materialDesign:MaterialDesignFont}"
     mc:Ignorable="d">
-    <Grid Background="{DynamicResource MaterialDesignPaper}" />
+    <Grid Background="{DynamicResource MaterialDesignPaper}">
+        <!--  Card 1  -->
+        <Border
+            Grid.Row="1"
+            Margin="10"
+            Padding="6"
+            Background="#FFFFFFFF"
+            BorderBrush="#CCC"
+            BorderThickness="0"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Opacity="0.7"
+                    ShadowDepth="2"
+                    Color="#FFCFCFCF" />
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,0"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Text="150" />
+                <TextBlock Text="Total Products" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+        <!--  Card 2  -->
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Padding="6"
+            Background="#FFFFFFFF"
+            BorderBrush="#CCC"
+            BorderThickness="0"
+            CornerRadius="12">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Opacity="0.7"
+                    ShadowDepth="2"
+                    Color="#FFCFCFCF" />
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,0"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Text="100" />
+                <TextBlock Text="Product in stock" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+        <!--  Card 3  -->
+        <Border
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="10"
+            Padding="6"
+            Background="#FFFFFFFF"
+            BorderBrush="#CCC"
+            BorderThickness="0"
+            CornerRadius="12">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Opacity="0.7"
+                    ShadowDepth="2"
+                    Color="#FFCFCFCF" />
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,0"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Text="50" />
+                <TextBlock Text="Product Out of stock" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+        <!--  Card 4  -->
+        <Border
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="10"
+            Padding="6"
+            Background="#FFFFFFFF"
+            BorderBrush="#CCC"
+            BorderThickness="0"
+            CornerRadius="12">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Opacity="0.7"
+                    ShadowDepth="2"
+                    Color="#FFCFCFCF" />
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,0"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Text="20" />
+                <TextBlock Text="Product Out of season" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+
+    </Grid>
 
 </UserControl>

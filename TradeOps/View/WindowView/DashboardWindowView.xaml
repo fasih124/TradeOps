@@ -24,16 +24,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="2"
-            Grid.ColumnSpan="1"
-            Margin="20,25,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontSize="24"
-            FontWeight="Bold"
-            Text="Trade Track" />
         <Grid
             Grid.RowSpan="2"
             Grid.Column="0"
@@ -86,8 +76,8 @@
 
         <ContentControl
             Name="MainContent"
-            Grid.Row="1"
-            Grid.RowSpan="2"
+            Grid.Row="0"
+            Grid.RowSpan="3"
             Grid.Column="1" />
 
         <Button
