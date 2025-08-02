@@ -74,16 +74,17 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="10" />
                     <!--  spacing  -->
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="29*" />
+                    <ColumnDefinition Width="617*" />
                 </Grid.ColumnDefinitions>
 
                 <!--  ComboBox: Search by ID or Name  -->
                 <ComboBox
                     Grid.Column="0"
                     Width="120"
-                    Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
-                    SelectedItem="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValue="{Binding SearchType, Mode=TwoWay}"
+                    SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
                     <ComboBoxItem Content="ID" />
                     <ComboBoxItem Content="Name" />
@@ -92,6 +93,7 @@
                 <!--  TextBox: Search input  -->
                 <TextBox
                     Grid.Column="2"
+                    Grid.ColumnSpan="2"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Enter search term"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
