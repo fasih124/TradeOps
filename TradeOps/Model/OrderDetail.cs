@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,29 @@ namespace TradeOps.Model
             get => _product;
             set
             {
-                if (SetProperty(ref _product, value) && value != null)
+
+                if (_product != value)
                 {
-                    ProductID = value.ID;
-                    UpdateCalculatedValues();
+                    if (_product != null)
+                        _product.PropertyChanged -= Product_PropertyChanged;
+
+                    if (SetProperty(ref _product, value) && value != null)
+                    {
+                        ProductID = value.ID;
+                        _product.PropertyChanged += Product_PropertyChanged;
+                        UpdateCalculatedValues();
+                    }
                 }
+
             }
         }
-
+        private void Product_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Product.SellingPrice) || e.PropertyName == nameof(Product.PurchasePrice))
+            {
+                UpdateCalculatedValues();
+            }
+        }
         private int _productID;
         public int ProductID
         {
@@ -36,11 +52,11 @@ namespace TradeOps.Model
             get => _quantity;
             set
             {
-                if (Product != null && value >= 0)
+                if (Product != null )
                 {
                     int available = Product.StockQuantity + _quantity; // recover previous reserved stock
 
-                    if (value <= available)
+                    if (value != _quantity)
                     {
                         Product.StockQuantity = available - value;
                         SetProperty(ref _quantity, value);
@@ -54,14 +70,14 @@ namespace TradeOps.Model
         public double SubProfit
         {
             get => _subProfit;
-            set => SetProperty(ref _subProfit, value);
+            private  set => SetProperty(ref _subProfit, value);
         }
 
         private double _subTotal;
         public double SubTotal
         {
             get => _subTotal;
-            set => SetProperty(ref _subTotal, value);
+            private set => SetProperty(ref _subTotal, value);
         }
 
         public OrderDetail(int quantity, Product product)
@@ -71,7 +87,11 @@ namespace TradeOps.Model
 
             Quantity = quantity; // Will auto-update stock and calculations
         }
-        public OrderDetail() { } 
+        public OrderDetail() 
+        {
+
+            _quantity = 0;
+        } 
         private void UpdateCalculatedValues()
         {
             if (Product != null)

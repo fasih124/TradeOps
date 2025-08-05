@@ -11,6 +11,7 @@
     Height="500"
     FontFamily="{materialDesign:MaterialDesignFont}"
     Style="{StaticResource MaterialDesignWindow}"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <StackPanel Margin="10">

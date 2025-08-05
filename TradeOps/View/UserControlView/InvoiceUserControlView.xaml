@@ -94,18 +94,25 @@
                         Width="*"
                         Binding="{Binding OrderID}"
                         Header="Order ID" />
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding TotalPrice}"
                         Header="Total Price" />
-                    <DataGridTextColumn
-                        Width="*"
-                        Binding="{Binding TotalProfit}"
-                        Header="Profit" />
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Discount}"
                         Header="Discount" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding FinalPrice}"
+                        Header="Net Total" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding TotalProfit}"
+                        Header="Profit" />
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding IsPaid}"

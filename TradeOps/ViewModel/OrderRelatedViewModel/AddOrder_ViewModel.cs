@@ -29,6 +29,8 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
         public ICommand AddProductCommand { get; set; }
         public ICommand SaveOrderCommand { get; set; }
+        public ICommand RemoveProductCommand { get; }
+
 
         public AddOrderViewModel()
         {
@@ -37,9 +39,21 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
             AddProductCommand = new RelayCommand(AddProduct);
             SaveOrderCommand = new RelayCommand(SaveOrder);
+            
+            RemoveProductCommand = new RelayCommand(RemoveProduct);
         }
 
 
+
+        private void RemoveProduct(object obj)
+        {
+            if (obj is OrderDetail detail && CurrentOrderDetails.Contains(detail))
+            {
+                CurrentOrderDetails.Remove(detail);
+                detail.PropertyChanged -= OrderDetail_PropertyChanged;
+                UpdateTotals();
+            }
+        }
         private void LoadCustomers()
         {
             Customers.Clear();
@@ -71,6 +85,7 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
                 else
                 {
                     var detail = new OrderDetail(EnteredQuantity, SelectedProduct);
+                    detail.PropertyChanged += OrderDetail_PropertyChanged;
                     CurrentOrderDetails.Add(detail);
                 }
 
@@ -79,6 +94,19 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
                 UpdateTotals();
             }
         }
+
+        private void OrderDetail_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(OrderDetail.Quantity) ||
+                e.PropertyName == nameof(OrderDetail.SubTotal) ||
+                e.PropertyName == nameof(OrderDetail.SubProfit) ||
+                e.PropertyName == nameof(OrderDetail.Product.SellingPrice) ||
+                e.PropertyName == nameof(OrderDetail.Product.PurchasePrice))
+            {
+                UpdateTotals();
+            }
+        }
+
 
         private void UpdateTotals()
         {

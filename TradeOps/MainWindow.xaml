@@ -13,6 +13,7 @@
     FontFamily="{materialDesign:MaterialDesignFont}"
     Style="{StaticResource MaterialDesignWindow}"
     WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
         <TextBlock

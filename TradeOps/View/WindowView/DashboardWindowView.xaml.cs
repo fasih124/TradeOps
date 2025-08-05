@@ -44,7 +44,7 @@ namespace TradeOps.View.WindowView
                 new SampleItem
                 {
                     Title = "Orders",
-                    Notification = 2,
+                    Notification = 0,
                     SelectedIcon = PackIconKind.Cart,
                     UnselectedIcon = PackIconKind.CartOutline
                 },
