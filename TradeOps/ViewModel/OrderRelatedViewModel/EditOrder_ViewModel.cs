@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,8 +18,22 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
         public ObservableCollection<Product> Products { get; set; } = new();
         public ObservableCollection<OrderDetail> CurrentOrderDetails { get; set; } = new();
 
-        public Customer SelectedCustomer { get; set; }
+        //public Customer SelectedCustomer { get; set; }
+        private Customer _selectedCustomer;
+        public Customer SelectedCustomer
+        {
+            get => _selectedCustomer;
+            set => SetProperty(ref _selectedCustomer, value);
+        }
         public Product SelectedProduct { get; set; }
+        private bool _complete;
+        public bool Complete
+        {
+            get => _complete;
+            set => SetProperty(ref _complete, value);
+        }
+
+
         public int EnteredQuantity { get; set; }
 
         public int TotalQuantity { get; set; }
@@ -38,9 +53,9 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
             LoadCustomers();
             LoadProducts();
 
-            SelectedCustomer = order.Customer;
+            SelectedCustomer = Customers.FirstOrDefault(c => c.ID == order.Customer.ID);
+            Complete = order.IsCompleted;
 
-           
             foreach (var detail in order.ProductDetails)
             {
                 var newDetail = new OrderDetail(detail.Quantity, detail.Product);
@@ -137,7 +152,7 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
             try
             {
-                DB_Queries.UpdateOrder(_originalOrder.ID, SelectedCustomer, CurrentOrderDetails, TotalAmount, TotalProfit);
+                DB_Queries.UpdateOrder(_originalOrder.ID, SelectedCustomer, CurrentOrderDetails, TotalAmount, TotalProfit,Complete);
                 MessageBox.Show("Order updated successfully!");
             }
             catch (Exception ex)

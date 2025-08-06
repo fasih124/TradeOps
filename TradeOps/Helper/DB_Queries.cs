@@ -535,15 +535,16 @@ namespace TradeOps.Helper
         }
 
 
-        public static void UpdateOrder(long orderId, Customer customer, ObservableCollection<OrderDetail> updatedDetails, double totalAmount, double totalProfit)
+        public static void UpdateOrder(long orderId, Customer customer, ObservableCollection<OrderDetail> updatedDetails, double totalAmount, double totalProfit,bool isCompleted)
         {
             using var con = GetConnection();
             con.Open();
             using var transaction = con.BeginTransaction();
 
             // 1. Update CustomerOrder table
-            var updateOrderCmd = new SQLiteCommand("UPDATE CustomerOrder SET CustomerID = @CustomerID WHERE ID = @ID", con);
+            var updateOrderCmd = new SQLiteCommand("UPDATE CustomerOrder SET CustomerID = @CustomerID, isCompleted = @IsCompleted WHERE ID = @ID", con);
             updateOrderCmd.Parameters.AddWithValue("@CustomerID", customer.ID);
+            updateOrderCmd.Parameters.AddWithValue("@IsCompleted", isCompleted);
             updateOrderCmd.Parameters.AddWithValue("@ID", orderId);
             updateOrderCmd.ExecuteNonQuery();
 
