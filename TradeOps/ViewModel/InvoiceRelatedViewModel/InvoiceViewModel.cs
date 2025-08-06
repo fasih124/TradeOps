@@ -113,6 +113,7 @@ namespace TradeOps.ViewModel.InvoiceRelatedViewModel
                 MessageBox.Show($"Failed to update status: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+       
         private void FilterInvoices()
         {
             if (_allInvoices == null)
@@ -151,11 +152,13 @@ namespace TradeOps.ViewModel.InvoiceRelatedViewModel
             Invoices = new ObservableCollection<Invoice>(filtered);
         }
 
-
         private void PrintInvoice(object parameter)
         {
             if (parameter is Invoice invoice)
             {
+                InvoicePDFGenerator.GenerateInvoicePDF(invoice);
+                //InvoicePDFGenerator.GenerateInvoicePDF(invoice.ID, invoice.Date, invoice.TotalPrice, invoice.Discount, invoice.FinalPrice, invoice.IsPaid);
+
                 MessageBox.Show($"Print Invoice ID: {invoice.ID}", "Print", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
