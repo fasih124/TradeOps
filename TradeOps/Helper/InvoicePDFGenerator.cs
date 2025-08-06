@@ -118,20 +118,36 @@ namespace TradeOps.Helper
                 gfx.DrawLine(XPens.Black, margin, yPoint - 20, page.Width - margin, yPoint - 20);
 
                 // --- Title Centered ---
-                gfx.DrawString("TradeOps", titleFont, XBrushes.Black,
+                gfx.DrawString("TrackOps", titleFont, XBrushes.Black,
                     new XRect(0, yPoint - 15, page.Width, 20), XStringFormats.TopCenter);
 
-                yPoint += 10;
+               
+                yPoint += 10; 
 
-                // --- Top Info Line: Order, Customer, Invoice IDs ---
-                string topLine = $"Order ID: OR{order.ID}    Customer ID: CUS{order.CustomerID}    Invoice ID: INV{invoice.ID}";
-                gfx.DrawString(topLine, boldFont, XBrushes.Black, new XRect(margin, yPoint, page.Width - 2 * margin, page.Height), XStringFormats.TopLeft);
+                // --- Top Info Line (Order ID, Customer ID, Invoice ID) Centered and Spaced ---
+                double infoY = yPoint;
+                double sectionWidth = (page.Width - 2 * margin) / 3;
+
+                gfx.DrawString($"Order ID: OR{order.ID}", boldFont, XBrushes.Black,
+                    new XRect(margin, infoY, sectionWidth, 20), XStringFormats.TopLeft);
+
+                gfx.DrawString($"Customer ID: CUS{order.CustomerID}", boldFont, XBrushes.Black,
+                    new XRect(margin + sectionWidth, infoY, sectionWidth, 20), XStringFormats.TopCenter);
+
+                gfx.DrawString($"Invoice ID: INV{invoice.ID}", boldFont, XBrushes.Black,
+                    new XRect(margin + 2 * sectionWidth, infoY, sectionWidth, 20), XStringFormats.TopRight);
+
                 yPoint += 25;
 
-                // --- Customer Info ---
+                // --- Customer Info Line (Customer Name, Order Date) ---
                 string customerName = order.Customer?.Name ?? "Unknown Customer";
-                string secondLine = $"Customer Name: {customerName}    Order Date: {order.Date:dd-MM-yyyy}";
-                gfx.DrawString(secondLine, font, XBrushes.Black, new XRect(margin, yPoint, page.Width - 2 * margin, page.Height), XStringFormats.TopLeft);
+
+                gfx.DrawString($"Customer Name: {customerName}", font, XBrushes.Black,
+                    new XRect(margin, yPoint, sectionWidth, 20), XStringFormats.TopLeft);
+
+                gfx.DrawString($"Order Date: {order.Date:dd-MM-yyyy}", font, XBrushes.Black,
+                    new XRect(page.Width - margin - sectionWidth, yPoint, sectionWidth, 20), XStringFormats.TopRight);
+
                 yPoint += 30;
 
                 // --- Product Table Header ---
@@ -198,6 +214,10 @@ namespace TradeOps.Helper
                 // --- Black Line at Bottom ---
                 gfx.DrawLine(XPens.Black, margin, yPoint + 10, page.Width - margin, yPoint + 10);
 
+                // --- Thank You Note ---
+                gfx.DrawString("Thank you for your business!", font, XBrushes.Black,
+                    new XRect(0, yPoint + 20, page.Width, 20), XStringFormats.Center);
+
                 // --- Save to PDF ---
                 string exePath = AppDomain.CurrentDomain.BaseDirectory;
                 string invoiceFolder = Path.Combine(exePath, "Invoices");
@@ -214,6 +234,7 @@ namespace TradeOps.Helper
                 MessageBox.Show($"Error generating invoice PDF:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
 
 
