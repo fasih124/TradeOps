@@ -29,7 +29,10 @@
                     VerticalAlignment="Center"
                     FontSize="12"
                     Text="Load previous data: " />
-                <Button Width="120" Content="Import Data" />
+                <Button
+                    Width="120"
+                    Click="ImportButton_Click"
+                    Content="Import Data" />
 
             </StackPanel>
 
@@ -41,7 +44,10 @@
                     VerticalAlignment="Center"
                     FontSize="12"
                     Text="Backup your data: " />
-                <Button Width="120" Content="Export Data" />
+                <Button
+                    Width="120"
+                    Click="ExportButton_Click"
+                    Content="Export Data" />
 
             </StackPanel>
 
@@ -57,6 +63,7 @@
                     Width="120"
                     Background="#FFFF7272"
                     BorderBrush="#FFFF7575"
+                    Click="ResetButton_Click"
                     Content="Reset" />
 
             </StackPanel>
