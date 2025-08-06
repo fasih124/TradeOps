@@ -37,7 +37,7 @@ namespace TradeOps.View.WindowView
                 new SampleItem
                 {
                     Title = "Dashboard",
-                    Notification = 1,
+                    Notification = 0,
                     SelectedIcon = PackIconKind.ViewDashboard,
                     UnselectedIcon = PackIconKind.ViewDashboardOutline
                 },
@@ -69,6 +69,13 @@ namespace TradeOps.View.WindowView
                     SelectedIcon = PackIconKind.InvoiceMultiple,
                     UnselectedIcon = PackIconKind.InvoiceMultipleOutline
                 },
+                new SampleItem
+                {
+                    Title = "Setting",
+                    Notification = 0,
+                    SelectedIcon = PackIconKind.Cog,
+                    UnselectedIcon = PackIconKind.CogOutline
+                }
             };
         }
 
@@ -92,6 +99,9 @@ namespace TradeOps.View.WindowView
                         break;
                     case "Invoice":
                         MainContent.Content = new InvoiceUserControlView();
+                        break;
+                    case "Setting":
+                        MainContent.Content = new SettingUserControlView();
                         break;
                     default:
                         MainContent.Content = new DashboardUserControlView();
