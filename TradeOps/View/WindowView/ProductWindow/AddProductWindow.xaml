@@ -29,6 +29,8 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Purchase Price"
+                LostFocus="TextBox_RestoreZeroIfEmpty"
+                PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.PurchasePrice}" />
 
@@ -36,6 +38,8 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Selling Price"
+                LostFocus="TextBox_RestoreZeroIfEmpty"
+                PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.SellingPrice}" />
 
@@ -43,12 +47,16 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Threshold Level"
+                LostFocus="TextBox_RestoreZeroIfEmpty"
+                PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.ThresholdLevel}" />
 
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Stock Quantity"
+                LostFocus="TextBox_RestoreZeroIfEmpty"
+                PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.StockQuantity}" />
 

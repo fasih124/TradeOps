@@ -20,6 +20,8 @@ namespace TradeOps.View.UserControlView
     /// </summary>
     public partial class InvoiceUserControlView : UserControl
     {
+
+
         public InvoiceUserControlView()
         {
             InitializeComponent();

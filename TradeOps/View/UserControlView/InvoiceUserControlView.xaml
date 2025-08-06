@@ -86,45 +86,139 @@
                 SelectedItem="{Binding SelectedInvoice}"
                 SelectionMode="Single">
                 <DataGrid.Columns>
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding ID}"
-                        Header="Invoice ID" />
+                        Header="Invoice ID">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding OrderID}"
-                        Header="Order ID" />
+                        Header="Order ID">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
 
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding TotalPrice}"
-                        Header="Total Price" />
+                        Header="Total Price">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
 
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Discount}"
-                        Header="Discount" />
-                    <DataGridTextColumn
-                        Width="*"
-                        Binding="{Binding FinalPrice}"
-                        Header="Net Total" />
-                    <DataGridTextColumn
-                        Width="*"
-                        Binding="{Binding TotalProfit}"
-                        Header="Profit" />
+                        Header="Discount">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
 
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding IsPaid}"
-                        Header="Paid" />
+                        Binding="{Binding FinalPrice}"
+                        Header="Net Total">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding TotalProfit}"
+                        Header="Profit">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Date}"
-                        Header="Date" />
-                    <DataGridTextColumn
+                        Header="Date">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+
+
+
+                    <DataGridCheckBoxColumn
                         Width="*"
-                        Binding="{Binding Date}"
-                        Header="Action" />
+                        Binding="{Binding IsPaid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="Paid"
+                        IsReadOnly="False">
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridCheckBoxColumn.ElementStyle>
+                    </DataGridCheckBoxColumn>
+
+
+                    <DataGridTemplateColumn Width="*" Header="Action">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+
+                                    <!--  Apply Discount Button  -->
+                                    <Button
+                                        Margin="10,0"
+                                        Command="{Binding DataContext.ApplyDiscountCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignToolButton}"
+                                        ToolTip="Apply Discount">
+                                        <materialDesign:PackIcon
+                                            Width="20"
+                                            Height="20"
+                                            Foreground="#FF43815B"
+                                            Kind="HandCoinOutline" />
+
+                                    </Button>
+
+                                    <!--  Print Button  -->
+                                    <Button
+                                        Margin="10,0"
+                                        Command="{Binding DataContext.PrintInvoiceCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignToolButton}"
+                                        ToolTip="Print Invoice">
+                                        <materialDesign:PackIcon
+                                            Width="20"
+                                            Height="20"
+                                            Foreground="#FFFF6262"
+                                            Kind="Printer" />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -671,5 +671,38 @@ namespace TradeOps.Helper
             return invoices;
         }
 
+
+        public static void UpdateInvoice(Invoice invoice)
+        {
+            using var con = GetConnection();
+            con.Open();
+
+            //var insertInvoiceCmd = new SQLiteCommand("INSERT INTO Invoice (OrderID, total_price, total_profit, discount, isPaid, date) VALUES (@OrderID, @Total, @Profit, @discount, @ispaid, @Date);", con);
+            var insertInvoiceCmd = new SQLiteCommand("UPDATE Invoice SET total_price = @Total, discount=@discount ,isPaid=@ispaid,total_profit = @Profit WHERE OrderID = @OrderID", con);
+            insertInvoiceCmd.Parameters.AddWithValue("@OrderID", invoice.OrderID);
+            insertInvoiceCmd.Parameters.AddWithValue("@Total", invoice.TotalPrice);
+            insertInvoiceCmd.Parameters.AddWithValue("@Profit", invoice.TotalProfit);
+            insertInvoiceCmd.Parameters.AddWithValue("@discount", invoice.Discount);
+            insertInvoiceCmd.Parameters.AddWithValue("@ispaid", invoice.IsPaid);
+
+            insertInvoiceCmd.ExecuteNonQuery();
+
+            con.Close();
+        }
+
+        public static void UpdateInvoiceStatus(bool flag ,int id)
+        {
+            using var con = GetConnection();
+            con.Open();
+
+            //var insertInvoiceCmd = new SQLiteCommand("INSERT INTO Invoice (OrderID, total_price, total_profit, discount, isPaid, date) VALUES (@OrderID, @Total, @Profit, @discount, @ispaid, @Date);", con);
+            var insertInvoiceCmd = new SQLiteCommand("UPDATE Invoice SET isPaid=@ispaid WHERE OrderID = @OrderID", con);
+            insertInvoiceCmd.Parameters.AddWithValue("@OrderID", id);
+            insertInvoiceCmd.Parameters.AddWithValue("@ispaid", flag);
+
+            insertInvoiceCmd.ExecuteNonQuery();
+
+            con.Close();
+        }
     }
 }

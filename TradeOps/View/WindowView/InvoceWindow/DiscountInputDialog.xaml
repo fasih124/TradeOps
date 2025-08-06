@@ -1,0 +1,49 @@
+﻿<Window
+    x:Class="TradeOps.View.WindowView.InvoceWindow.DiscountInputDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TradeOps.View.WindowView.InvoceWindow"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="DiscountInputDialog"
+    Width="350"
+    Height="200"
+    mc:Ignorable="d">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="0,0,0,10"
+            FontSize="14"
+            Text="Enter discount amount:" />
+
+        <TextBox
+            x:Name="DiscountTextBox"
+            Grid.Row="1"
+            VerticalContentAlignment="Center"
+            materialDesign:HintAssist.Hint="Discount"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Width="100"
+                Margin="0,0,8,0"
+                Click="OK_Click"
+                Content="OK"
+                IsDefault="True" />
+            <Button
+                Width="100"
+                Content="Cancel"
+                IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

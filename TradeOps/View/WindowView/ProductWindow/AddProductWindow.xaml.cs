@@ -27,5 +27,22 @@ namespace TradeOps.View.WindowView
             vm.CloseAction = this.Close;
             this.DataContext = vm;
         }
+
+        private void TextBox_SelectAll_IfZero(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox tb && tb.Text == "0")
+            {
+                tb.Clear(); // Remove zero
+            }
+        }
+
+        private void TextBox_RestoreZeroIfEmpty(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox tb && string.IsNullOrWhiteSpace(tb.Text))
+            {
+                tb.Text = "0"; // Restore zero if nothing entered
+            }
+        }
+
     }
 }

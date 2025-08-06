@@ -8,26 +8,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Edit Customer"
     Width="400"
-    Height="300"
+    Height="400"
     FontFamily="{materialDesign:MaterialDesignFont}"
     Style="{StaticResource MaterialDesignWindow}"
     mc:Ignorable="d">
     <Grid>
         <StackPanel Margin="10">
-            <TextBlock Text="Name" />
-            <TextBox Text="{Binding Customer.Name}" />
 
-            <TextBlock Text="Area" />
-            <TextBox Text="{Binding Customer.Area}" />
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Name"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Customer.Name}" />
 
-            <TextBlock Text="Address" />
-            <TextBox Text="{Binding Customer.Address}" />
 
-            <TextBlock Text="Phone Number" />
-            <TextBox Text="{Binding Customer.PhoneNumber}" />
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Area"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Customer.Area}" />
+
+
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Address"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Customer.Address}" />
+
+
+            <TextBox
+                Margin="10"
+                materialDesign:HintAssist.Hint="Phone"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                Text="{Binding Customer.PhoneNumber}" />
 
             <Button
-                Margin="0,10,0,0"
+                Margin="10"
                 Command="{Binding SaveCommand}"
                 Content="Save" />
         </StackPanel>

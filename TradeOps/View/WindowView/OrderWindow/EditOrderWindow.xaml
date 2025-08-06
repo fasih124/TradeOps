@@ -63,7 +63,8 @@
                 <TextBox
                     Width="100"
                     Margin="0,0,10,0"
-                    Text="{Binding EnteredQuantity}" />
+                    Text="{Binding EnteredQuantity}"  PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+         LostFocus="TextBox_RestoreZeroIfEmpty"/>
 
                 <Button Command="{Binding AddProductCommand}" Content="Add Product" />
             </StackPanel>

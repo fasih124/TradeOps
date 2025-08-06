@@ -9,6 +9,10 @@ namespace TradeOps.Model
 {
     public class Invoice : BaseViewModel
     {
+
+        public Action<Invoice>? OnPaidStatusChanged { get; set; }
+
+
         private int _id;
         public int ID
         {
@@ -61,7 +65,13 @@ namespace TradeOps.Model
         public bool IsPaid
         {
             get => _isPaid;
-            set => SetProperty(ref _isPaid, value);
+            set
+            {
+                if (SetProperty(ref _isPaid, value))
+                {
+                    OnPaidStatusChanged?.Invoke(this); // Notify when status is changed
+                }
+            }
         }
 
         private string _date;

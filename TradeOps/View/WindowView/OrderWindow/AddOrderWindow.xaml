@@ -65,6 +65,8 @@
                 <TextBox
                     Width="100"
                     Margin="0,0,10,0"
+                    LostFocus="TextBox_RestoreZeroIfEmpty"
+                    PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
                     Text="{Binding EnteredQuantity}" />
 
                 <Button Command="{Binding AddProductCommand}" Content="Add Product" />
