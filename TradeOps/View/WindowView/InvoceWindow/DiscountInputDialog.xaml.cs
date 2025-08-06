@@ -19,22 +19,30 @@ namespace TradeOps.View.WindowView.InvoceWindow
     /// </summary>
     public partial class DiscountInputDialog : Window
     {
+        private double total;
+        private double previousDiscount;
         public double? DiscountValue { get; private set; }
-        public DiscountInputDialog()
+        public DiscountInputDialog(double total, double previousDiscount)
         {
             InitializeComponent();
+            this.total = total;
+            this.previousDiscount = previousDiscount;
+
+            DiscountTextBox.Text = previousDiscount.ToString();
             DiscountTextBox.Focus();
+            DiscountTextBox.CaretIndex = DiscountTextBox.Text.Length;
+
         }
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(DiscountTextBox.Text, out double discount))
+            if (double.TryParse(DiscountTextBox.Text, out double discount) && discount<= this.total)
             {
                 DiscountValue = discount;
                 DialogResult = true;
             }
             else
             {
-                MessageBox.Show("Please enter a valid number.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter a valid number. Less that or Equal to Total Price ", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

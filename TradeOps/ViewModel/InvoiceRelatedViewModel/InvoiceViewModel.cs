@@ -78,7 +78,7 @@ namespace TradeOps.ViewModel.InvoiceRelatedViewModel
         {
             if (parameter is Invoice invoice)
             {
-                var dialog = new DiscountInputDialog();
+                var dialog = new DiscountInputDialog(invoice.TotalPrice,invoice.Discount);
                 if (dialog.ShowDialog() == true && dialog.DiscountValue.HasValue)
                 {
                     invoice.Discount = dialog.DiscountValue.Value;

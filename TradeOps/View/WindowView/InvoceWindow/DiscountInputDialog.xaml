@@ -9,6 +9,7 @@
     Title="DiscountInputDialog"
     Width="350"
     Height="200"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Grid Margin="20">
         <Grid.RowDefinitions>
