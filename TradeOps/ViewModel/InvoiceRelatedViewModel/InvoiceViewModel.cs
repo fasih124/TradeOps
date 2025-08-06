@@ -156,9 +156,10 @@ namespace TradeOps.ViewModel.InvoiceRelatedViewModel
         {
             if (parameter is Invoice invoice)
             {
-                InvoicePDFGenerator.GenerateInvoicePDF(invoice);
-                //InvoicePDFGenerator.GenerateInvoicePDF(invoice.ID, invoice.Date, invoice.TotalPrice, invoice.Discount, invoice.FinalPrice, invoice.IsPaid);
 
+                CustomerOrder order = DB_Queries.GetOrderByID(invoice.OrderID);
+                order.Customer = DB_Queries.GetCustomerById(order.CustomerID);
+                InvoicePDFGenerator.GenerateInvoicePdf(invoice, order);
                 MessageBox.Show($"Print Invoice ID: {invoice.ID}", "Print", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

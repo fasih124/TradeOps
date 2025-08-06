@@ -240,6 +240,46 @@ namespace TradeOps.Helper
             return customers;
         }
 
+        public static Customer GetCustomerById(int customerId)
+        {
+            Customer customer = null;
+
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Customer WHERE ID = @ID";
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", customerId);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                customer = new Customer
+                                {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    Name = reader["name"].ToString(),
+                                    Address = reader["address"].ToString(),
+                                    Area = reader["area"].ToString(),
+                                    PhoneNumber = reader["phone_number"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("DB ERROR: " + ex.Message);
+            }
+
+            return customer;
+        }
+
 
         public static bool InsertCustomer(Customer customer)
         {
@@ -641,6 +681,33 @@ namespace TradeOps.Helper
             return null; // not found
         }
 
+
+        public static CustomerOrder GetOrderByID(int orderId)
+        {
+            CustomerOrder order = null;
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT * FROM CustomerOrder WHERE ID = @id", con);
+            cmd.Parameters.AddWithValue("@id", orderId);
+
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                order = new CustomerOrder
+                {
+                    ID = Convert.ToInt32(reader["ID"]),
+                    Date = reader["Date"].ToString(),
+                    IsCompleted = Convert.ToBoolean(reader["isCompleted"]),
+                    CustomerID = Convert.ToInt32(reader["customerID"]),
+                    ProductDetails = new ObservableCollection<OrderDetail>(
+                        DB_Queries.GetOrderDetails(orderId)
+                    )
+                };
+            }
+
+            return order;
+        }
 
 
         //===============================
