@@ -129,25 +129,48 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding ID}"
-                        Header="Order ID" />
+                        Header="Order ID">  
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
 
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Customer.Name}"
-                        Header="Customer" />
+                        Header="Customer">  
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn
-                        Width="*"
+                        Width="auto"
                         Binding="{Binding Date}"
-                        Header="Bill" />
-                    <DataGridTextColumn
-                        Width="*"
-                        Binding="{Binding Date}"
-                        Header="Date" />
+                        Header="Date">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn
                         Width="auto"
                         Binding="{Binding IsCompleted}"
-                        Header="Completed" />
-                    <DataGridTemplateColumn Width="Auto" Header="Action">
+                        Header="Completed">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTemplateColumn Width="150" Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Command="{Binding DataContext.ViewDetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="View Details" />

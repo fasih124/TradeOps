@@ -27,7 +27,13 @@ namespace TradeOps.Model
         public double TotalPrice
         {
             get => _totalPrice;
-            set => SetProperty(ref _totalPrice, value);
+            set
+            {
+                if (SetProperty(ref _totalPrice, value))
+                {
+                    UpdateTotalPriceAfterDiscount();
+                }
+            }
         }
 
         private double _discount;
@@ -42,6 +48,7 @@ namespace TradeOps.Model
                 }
             }
         }
+
 
         private double _finalPrice;
         public double FinalPrice
@@ -89,10 +96,10 @@ namespace TradeOps.Model
 
         public Invoice(CustomerOrder order, double discount = 0, bool isPaid = false)
         {
-            CustomerOrder = order;
-            Discount = discount;
+            Date = DateTime.Now.ToString("dd-MM-yyyy");
+            CustomerOrder = order; // this will set TotalPrice and TotalProfit
+            Discount = discount;   // now this will correctly compute FinalPrice
             IsPaid = isPaid;
-            Date = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         // Logic
@@ -105,6 +112,10 @@ namespace TradeOps.Model
 
         private void UpdateTotalPriceAfterDiscount()
         {
+            if (TotalPrice <= 0)
+                return;
+
+
             FinalPrice = TotalPrice - Discount;
         }
     }

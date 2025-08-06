@@ -27,6 +27,7 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
         public ICommand AddProductCommand { get; set; }
         public ICommand SaveOrderCommand { get; set; }
+        public ICommand RemoveProductCommand { get; }
 
         private readonly CustomerOrder _originalOrder;
 
@@ -39,15 +40,29 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
             SelectedCustomer = order.Customer;
 
+           
             foreach (var detail in order.ProductDetails)
-                CurrentOrderDetails.Add(new OrderDetail(detail.Quantity, detail.Product));
+            {
+                var newDetail = new OrderDetail(detail.Quantity, detail.Product);
+                newDetail.PropertyChanged += OrderDetail_PropertyChanged;
+                CurrentOrderDetails.Add(newDetail);
+            }
 
             UpdateTotals();
 
             AddProductCommand = new RelayCommand(AddProduct);
             SaveOrderCommand = new RelayCommand(SaveOrder);
+           RemoveProductCommand = new RelayCommand(RemoveProduct);
         }
-
+        private void RemoveProduct(object obj)
+        {
+            if (obj is OrderDetail detail && CurrentOrderDetails.Contains(detail))
+            {
+                CurrentOrderDetails.Remove(detail);
+                detail.PropertyChanged -= OrderDetail_PropertyChanged;
+                UpdateTotals();
+            }
+        }
         private void LoadCustomers()
         {
             Customers.Clear();
@@ -67,13 +82,29 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
             if (SelectedProduct != null && EnteredQuantity > 0)
             {
                 var existing = CurrentOrderDetails.FirstOrDefault(p => p.Product.ID == SelectedProduct.ID);
-                if (existing != null)
+                if (existing != null) { 
                     existing.Quantity += EnteredQuantity;
-                else
-                    CurrentOrderDetails.Add(new OrderDetail(EnteredQuantity, SelectedProduct));
-
+            }
+            else
+            {
+                var detail = new OrderDetail(EnteredQuantity, SelectedProduct);
+                    detail.PropertyChanged += OrderDetail_PropertyChanged;
+                    CurrentOrderDetails.Add(detail);
+            }
                 EnteredQuantity = 0;
                 OnPropertyChanged(nameof(EnteredQuantity));
+                UpdateTotals();
+            }
+        }
+
+        private void OrderDetail_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(OrderDetail.Quantity) ||
+                e.PropertyName == nameof(OrderDetail.SubTotal) ||
+                e.PropertyName == nameof(OrderDetail.SubProfit) ||
+                e.PropertyName == nameof(OrderDetail.Product.SellingPrice) ||
+                e.PropertyName == nameof(OrderDetail.Product.PurchasePrice))
+            {
                 UpdateTotals();
             }
         }

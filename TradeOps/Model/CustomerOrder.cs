@@ -11,6 +11,9 @@ namespace TradeOps.Model
 {
     public class CustomerOrder : BaseViewModel
     {
+        public double TotalPrice => ProductDetails?.Sum(p => p.SubTotal) ?? 0;
+        public double TotalProfit => ProductDetails?.Sum(p => p.SubProfit) ?? 0;
+
         private int _id;
         public int ID
         {
@@ -73,6 +76,8 @@ namespace TradeOps.Model
             Customer = customer;
             CustomerID = customer?.ID ?? 0;
             ProductDetails = new ObservableCollection<OrderDetail>();
+            ProductDetails.CollectionChanged += (s, e) => OnPropertyChanged(nameof(TotalPrice));
+            ProductDetails.CollectionChanged += (s, e) => OnPropertyChanged(nameof(TotalProfit));
         }
 
         public CustomerOrder()

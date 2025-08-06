@@ -326,7 +326,39 @@ namespace TradeOps.Helper
                     connection.Open();
                     using (var transaction = connection.BeginTransaction())
                     {
-                        // 1. Delete OrderDetails
+
+                        // 1. Get order details before deletion
+                        var orderDetails = new List<(int ProductID, int Quantity)>();
+                        string selectDetailsQuery = "SELECT productID, quantity FROM OrderDetail WHERE orderID = @orderID";
+                        using (var selectCmd = new SQLiteCommand(selectDetailsQuery, connection, transaction))
+                        {
+                            selectCmd.Parameters.AddWithValue("@orderID", orderId);
+                            using (var reader = selectCmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    int productId = Convert.ToInt32(reader["productID"]);
+                                    int quantity = Convert.ToInt32(reader["quantity"]);
+                                    orderDetails.Add((productId, quantity));
+                                }
+                            }
+                        }
+
+
+                        // 2. Revert stock for each product
+                        foreach (var detail in orderDetails)
+                        {
+                            string updateStockQuery = "UPDATE Product SET inventory_Stock = inventory_Stock + @quantity WHERE ID = @productID";
+                            using (var updateCmd = new SQLiteCommand(updateStockQuery, connection, transaction))
+                            {
+                                updateCmd.Parameters.AddWithValue("@quantity", detail.Quantity);
+                                updateCmd.Parameters.AddWithValue("@productID", detail.ProductID);
+                                updateCmd.ExecuteNonQuery();
+                            }
+                        }
+
+
+                        // 3. Delete OrderDetails
                         string deleteDetailsQuery = "DELETE FROM OrderDetail WHERE orderID = @orderID";
                         using (var cmd = new SQLiteCommand(deleteDetailsQuery, connection, transaction))
                         {
@@ -456,7 +488,7 @@ namespace TradeOps.Helper
             con.Open();
             using var transaction = con.BeginTransaction();
 
-            var orderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            var orderDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
             // Insert into CustomerOrder
             var insertOrderCmd = new SQLiteCommand("INSERT INTO CustomerOrder (Date, CustomerID, isCompleted) VALUES (@Date, @CustomerID, 0);", con);
@@ -492,7 +524,7 @@ namespace TradeOps.Helper
             using var con = GetConnection();
             con.Open();
 
-            var date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            var date = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
             var insertInvoiceCmd = new SQLiteCommand("INSERT INTO Invoice (OrderID, total_price, total_profit, discount, isPaid, date) VALUES (@OrderID, @Total, @Profit, 0, 0, @Date);", con);
             insertInvoiceCmd.Parameters.AddWithValue("@OrderID", orderId);
@@ -502,65 +534,6 @@ namespace TradeOps.Helper
             insertInvoiceCmd.ExecuteNonQuery();
         }
 
-
-
-        //public static void UpdateOrder(int orderId, Customer customer, ObservableCollection<OrderDetail> newOrderDetails)
-        //{
-        //    using var con = GetConnection();
-        //    con.Open();
-        //    using var transaction = con.BeginTransaction();
-
-        //    // 1. Update the CustomerOrder
-        //    var updateOrderCmd = new SQLiteCommand("UPDATE CustomerOrder SET Date = @Date, CustomerID = @CustomerID WHERE ID = @ID", con);
-        //    updateOrderCmd.Parameters.AddWithValue("@Date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        //    updateOrderCmd.Parameters.AddWithValue("@CustomerID", customer.ID);
-        //    updateOrderCmd.Parameters.AddWithValue("@ID", orderId);
-        //    updateOrderCmd.ExecuteNonQuery();
-
-        //    // 2. Get old order details to restore stock
-        //    var getOldDetailsCmd = new SQLiteCommand("SELECT ProductID, Quantity FROM OrderDetail WHERE OrderID = @OrderID", con);
-        //    getOldDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
-
-        //    var oldDetails = new List<(int productId, int quantity)>();
-        //    using (var reader = getOldDetailsCmd.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            oldDetails.Add((Convert.ToInt32(reader["ProductID"]), Convert.ToInt32(reader["Quantity"])));
-        //        }
-        //    }
-
-        //    // 3. Restore stock for old order
-        //    foreach (var (productId, quantity) in oldDetails)
-        //    {
-        //        var restoreStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = Inventory_Stock + @Qty WHERE ID = @ID", con);
-        //        restoreStockCmd.Parameters.AddWithValue("@Qty", quantity);
-        //        restoreStockCmd.Parameters.AddWithValue("@ID", productId);
-        //        restoreStockCmd.ExecuteNonQuery();
-        //    }
-
-        //    // 4. Delete old OrderDetails
-        //    var deleteOldDetailsCmd = new SQLiteCommand("DELETE FROM OrderDetail WHERE OrderID = @OrderID", con);
-        //    deleteOldDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
-        //    deleteOldDetailsCmd.ExecuteNonQuery();
-
-        //    // 5. Insert new OrderDetails and update stock
-        //    foreach (var detail in newOrderDetails)
-        //    {
-        //        var insertDetailCmd = new SQLiteCommand("INSERT INTO OrderDetail (OrderID, ProductID, Quantity) VALUES (@OrderID, @ProductID, @Quantity);", con);
-        //        insertDetailCmd.Parameters.AddWithValue("@OrderID", orderId);
-        //        insertDetailCmd.Parameters.AddWithValue("@ProductID", detail.ProductID);
-        //        insertDetailCmd.Parameters.AddWithValue("@Quantity", detail.Quantity);
-        //        insertDetailCmd.ExecuteNonQuery();
-
-        //        var updateStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = Inventory_Stock - @Qty WHERE ID = @ID", con);
-        //        updateStockCmd.Parameters.AddWithValue("@Qty", detail.Quantity);
-        //        updateStockCmd.Parameters.AddWithValue("@ID", detail.ProductID);
-        //        updateStockCmd.ExecuteNonQuery();
-        //    }
-
-        //    transaction.Commit();
-        //}
 
         public static void UpdateOrder(long orderId, Customer customer, ObservableCollection<OrderDetail> updatedDetails, double totalAmount, double totalProfit)
         {
