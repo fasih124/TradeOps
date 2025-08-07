@@ -35,7 +35,56 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
-            <PasswordBox
+
+            <StackPanel Orientation="Horizontal">
+
+
+                <!--  Hidden PasswordBox  -->
+                <PasswordBox
+                    x:Name="PasswordBoxHidden"
+                    Width="250"
+                    Height="40"
+                    Margin="10"
+                    Padding="5"
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource PrimaryHueMidBrush}"
+                    FontSize="18"
+                    PasswordChanged="PasswordBoxHidden_PasswordChanged"
+                    Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                    Visibility="Visible" />
+
+                <!--  Visible TextBox for showing password  -->
+                <TextBox
+                    x:Name="PasswordBoxVisible"
+                    Width="250"
+                    Height="40"
+                    Margin="10"
+                    Padding="5"
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource PrimaryHueMidBrush}"
+                    FontSize="18"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    TextChanged="PasswordBoxVisible_TextChanged"
+                    Visibility="Collapsed" />
+
+                <!--  Toggle show/hide button with eye icon  -->
+                <Button
+                    Width="60"
+                    Height="40"
+                    Margin="0,10"
+                    HorizontalAlignment="Right"
+                    Click="TogglePasswordVisibility"
+                    Foreground="White">
+                    <materialDesign:PackIcon
+                        x:Name="EyeIcon"
+                        Width="24"
+                        Height="24"
+                        Kind="Eye" />
+                </Button>
+            </StackPanel>
+            <!--<PasswordBox
                 x:Name="PasswordInput"
                 Width="250"
                 Height="40"
@@ -45,11 +94,11 @@
                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                 materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource PrimaryHueMidBrush}"
                 FontSize="18"
-                Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+                Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />-->
             <!--  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />  -->
 
             <Button
-                Width="250"
+                Width="320"
                 Height="40"
                 Margin="10"
                 Click="Button_Click"

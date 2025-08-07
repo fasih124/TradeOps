@@ -556,8 +556,10 @@ namespace TradeOps.Helper
                 insertDetailCmd.ExecuteNonQuery();
 
                 // Update Product Stock
-                var updateStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = @Stock WHERE ID = @ID", con);
+                var updateStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = @Stock ,  purchase_price = @PurchasePrice, selling_price = @SellingPrice WHERE ID = @ID", con);
                 updateStockCmd.Parameters.AddWithValue("@Stock", detail.Product.StockQuantity);
+                updateStockCmd.Parameters.AddWithValue("@PurchasePrice", detail.Product.PurchasePrice);
+                updateStockCmd.Parameters.AddWithValue("@SellingPrice", detail.Product.SellingPrice);
                 updateStockCmd.Parameters.AddWithValue("@ID", detail.ProductID);
                 updateStockCmd.ExecuteNonQuery();
             }
@@ -625,11 +627,20 @@ namespace TradeOps.Helper
 
                 detail.Product.StockQuantity -= detail.Quantity;
 
-                var updateStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = @Stock WHERE ID = @ID", con);
+                var updateStockCmd = new SQLiteCommand("UPDATE Product SET Inventory_Stock = @Stock ,  purchase_price = @PurchasePrice, selling_price = @SellingPrice WHERE ID = @ID", con);
                 updateStockCmd.Parameters.AddWithValue("@Stock", detail.Product.StockQuantity);
+                updateStockCmd.Parameters.AddWithValue("@PurchasePrice", detail.Product.PurchasePrice);
+                updateStockCmd.Parameters.AddWithValue("@SellingPrice", detail.Product.SellingPrice);
                 updateStockCmd.Parameters.AddWithValue("@ID", detail.ProductID);
                 updateStockCmd.ExecuteNonQuery();
             }
+
+
+
+            
+         
+
+
 
             // 5. Update Invoice
             var updateInvoiceCmd = new SQLiteCommand("UPDATE Invoice SET total_price = @Total, total_profit = @Profit WHERE OrderID = @OrderID", con);

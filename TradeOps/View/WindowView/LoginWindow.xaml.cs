@@ -23,13 +23,17 @@ namespace TradeOps.View.WindowView
         {
             InitializeComponent();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Get the password entered by the user
-            string enteredPassword = PasswordInput.Password;
+            //string enteredPassword = PasswordInput.Password;
+            string enteredPassword = isPasswordVisible
+    ? PasswordBoxVisible.Text
+    : PasswordBoxHidden.Password;
 
             // Replace with your actual check (e.g., compare with database, config, etc.)
-            string correctPassword = "goodbyetradeops#144";
+            string correctPassword = "tradeops#144";
 
 
 
@@ -53,5 +57,41 @@ namespace TradeOps.View.WindowView
 
 
         }
+
+        private bool isPasswordVisible = false;
+
+        private void TogglePasswordVisibility(object sender, RoutedEventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible)
+            {
+                PasswordBoxVisible.Text = PasswordBoxHidden.Password;
+                PasswordBoxVisible.Visibility = Visibility.Visible;
+                PasswordBoxHidden.Visibility = Visibility.Collapsed;
+                EyeIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+            }
+            else
+            {
+                PasswordBoxHidden.Password = PasswordBoxVisible.Text;
+                PasswordBoxHidden.Visibility = Visibility.Visible;
+                PasswordBoxVisible.Visibility = Visibility.Collapsed;
+                EyeIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
+            }
+        }
+
+        private void PasswordBoxHidden_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!isPasswordVisible)
+                PasswordBoxVisible.Text = PasswordBoxHidden.Password;
+        }
+
+        private void PasswordBoxVisible_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isPasswordVisible)
+                PasswordBoxHidden.Password = PasswordBoxVisible.Text;
+        }
+
+
     }
 }
