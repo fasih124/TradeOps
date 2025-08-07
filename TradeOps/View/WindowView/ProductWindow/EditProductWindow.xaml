@@ -19,6 +19,7 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Name"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.Name}" />
 
@@ -26,16 +27,20 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Purchase Price"
+                FontSize="18"
                 LostFocus="TextBox_RestoreZeroIfEmpty"
                 PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+                PreviewTextInput="NumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.PurchasePrice}" />
 
             <TextBox
                 Margin="10"
-                materialDesign:HintAssist.Hint="Selling Pric"
+                materialDesign:HintAssist.Hint="Selling Price"
+                FontSize="18"
                 LostFocus="TextBox_RestoreZeroIfEmpty"
                 PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+                PreviewTextInput="NumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.SellingPrice}" />
 
@@ -43,8 +48,10 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Threshold Level"
+                FontSize="18"
                 LostFocus="TextBox_RestoreZeroIfEmpty"
                 PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+                PreviewTextInput="NumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.ThresholdLevel}" />
 
@@ -52,20 +59,25 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Stock Quantity"
+                FontSize="18"
                 LostFocus="TextBox_RestoreZeroIfEmpty"
                 PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+                PreviewTextInput="NumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Product.StockQuantity}" />
 
             <CheckBox
                 Margin="10"
                 Content="Is Tracked"
+                FontSize="18"
                 IsChecked="{Binding Product.IsTracked}" />
 
             <Button
                 Margin="10"
                 Command="{Binding SaveCommand}"
-                Content="Save" />
+                Content="Save"
+                FontSize="18"
+                Foreground="White" />
         </StackPanel>
     </Grid>
 </Window>

@@ -14,7 +14,7 @@
         Padding="10"
         Background="white"
         CornerRadius="6">
-        <Grid Background="White">
+        <Grid Margin="10" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="70" />
@@ -30,7 +30,8 @@
             <TextBlock
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontSize="32"
+                FontSize="24"
+                FontWeight="Bold"
                 Text="Orders" />
 
             <Button
@@ -41,6 +42,7 @@
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteOrderCommand}"
                 Content="Delete Order"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
 
 
@@ -53,18 +55,19 @@
                 BorderBrush="#FF009688"
                 Command="{Binding EditOrderCommand}"
                 Content="Edit Selected Order"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
                 Grid.Row="0"
                 Grid.Column="3"
-                Margin="10,0"
+                Margin="0"
                 Padding="30,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 BorderThickness="0"
                 Command="{Binding OpenAddOrderWindowCommand}"
                 Content="Generate Order"
-                FontSize="16"
+                FontSize="18"
                 FontWeight="Medium"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}" />
 
@@ -89,17 +92,19 @@
                     Width="120"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
+                    FontSize="18"
                     SelectedValue="{Binding SearchType, Mode=TwoWay}"
                     SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
-                    <ComboBoxItem Content="ID" />
-                    <ComboBoxItem Content="Name" />
-                    <ComboBoxItem Content="Date" />
+                    <ComboBoxItem Content="ID" FontSize="18" />
+                    <ComboBoxItem Content="Name" FontSize="18" />
+                    <ComboBoxItem Content="Date" FontSize="18" />
                 </ComboBox>
                 <TextBox
                     Grid.Column="2"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Enter search term"
+                    FontSize="18"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -117,6 +122,7 @@
                 BorderBrush="white"
                 BorderThickness="1"
                 CanUserAddRows="False"
+                FontSize="18"
                 GridLinesVisibility="Horizontal"
                 HeadersVisibility="Column"
                 HorizontalGridLinesBrush="#10000000"
@@ -129,7 +135,8 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding ID}"
-                        Header="Order ID">  
+                        FontSize="18"
+                        Header="Order ID">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -140,7 +147,8 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Customer.Name}"
-                        Header="Customer">  
+                        FontSize="18"
+                        Header="Customer">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -151,6 +159,7 @@
                     <DataGridTextColumn
                         Width="auto"
                         Binding="{Binding Date}"
+                        FontSize="18"
                         Header="Date">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -162,6 +171,7 @@
                     <DataGridTextColumn
                         Width="auto"
                         Binding="{Binding IsCompleted}"
+                        FontSize="18"
                         Header="Completed">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -173,7 +183,10 @@
                     <DataGridTemplateColumn Width="150" Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Command="{Binding DataContext.ViewDetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="View Details" />
+                                <Button
+                                    Command="{Binding DataContext.ViewDetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    Content="View Details"
+                                    FontSize="18" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

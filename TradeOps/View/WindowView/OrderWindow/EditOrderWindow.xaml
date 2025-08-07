@@ -32,16 +32,19 @@
                 <TextBlock
                     Margin="0,0,5,0"
                     VerticalAlignment="Center"
+                    FontSize="18"
                     Text="Customer:" />
                 <ComboBox
                     Width="200"
                     DisplayMemberPath="Name"
+                    FontSize="18"
                     ItemsSource="{Binding Customers}"
                     SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
 
                 <CheckBox
                     Margin="100,0,0,0"
                     Content="Order Completed"
+                    FontSize="18"
                     IsChecked="{Binding Complete}" />
             </StackPanel>
 
@@ -53,26 +56,35 @@
                 <TextBlock
                     Margin="0,0,5,0"
                     VerticalAlignment="Center"
+                    FontSize="18"
                     Text="Product:" />
                 <ComboBox
                     Width="200"
                     Margin="0,0,10,0"
                     DisplayMemberPath="Name"
+                    FontSize="18"
                     ItemsSource="{Binding Products}"
                     SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
 
                 <TextBlock
                     Margin="0,0,5,0"
                     VerticalAlignment="Center"
+                    FontSize="18"
                     Text="Quantity:" />
                 <TextBox
                     Width="100"
                     Margin="0,0,10,0"
+                    FontSize="18"
                     LostFocus="TextBox_RestoreZeroIfEmpty"
                     PreviewGotKeyboardFocus="TextBox_SelectAll_IfZero"
+                    PreviewTextInput="NumberOnly_PreviewTextInput"
                     Text="{Binding EnteredQuantity}" />
 
-                <Button Command="{Binding AddProductCommand}" Content="Add Product" />
+                <Button
+                    Command="{Binding AddProductCommand}"
+                    Content="Add Product"
+                    FontSize="18"
+                    Foreground="White" />
             </StackPanel>
 
             <!--  Order Details Table  -->
@@ -85,27 +97,33 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Product.Name}"
+                        FontSize="18"
                         Header="Product" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Quantity}"
+                        FontSize="18"
                         Header="Qty" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Product.PurchasePrice}"
+                        FontSize="18"
                         Header="Purchase Price" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Product.SellingPrice}"
+                        FontSize="18"
                         Header="Sale Price" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding SubTotal}"
+                        FontSize="18"
                         Header="Subtotal"
                         IsReadOnly="True" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding SubProfit}"
+                        FontSize="18"
                         Header="Profit"
                         IsReadOnly="True" />
                     <DataGridTemplateColumn Width="auto" Header="Delete">
@@ -117,7 +135,7 @@
                                     Command="{Binding DataContext.RemoveProductCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding}"
                                     Style="{StaticResource MaterialDesignToolButton}">
-                                    <materialDesign:PackIcon Kind="Close" />
+                                    <materialDesign:PackIcon FontSize="18" Kind="Close" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -150,8 +168,13 @@
                         <TextBlock
                             Margin="10,0,5,0"
                             VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Medium"
                             Text="Total Qty:" />
-                        <TextBlock Margin="20,0,15,0" Text="{Binding TotalQuantity}" />
+                        <TextBlock
+                            Margin="20,0,5,0"
+                            FontSize="18"
+                            Text="{Binding TotalQuantity}" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="2"
@@ -160,8 +183,13 @@
                         <TextBlock
                             Margin="10,0,5,0"
                             VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Medium"
                             Text="Profit:" />
-                        <TextBlock Margin="20,0,15,0" Text="{Binding TotalProfit}" />
+                        <TextBlock
+                            Margin="20,0,5,0"
+                            FontSize="18"
+                            Text="{Binding TotalProfit}" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="3"
@@ -170,14 +198,21 @@
                         <TextBlock
                             Margin="10,0,5,0"
                             VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Medium"
                             Text="Total:" />
-                        <TextBlock Margin="20,0,15,0" Text="{Binding TotalAmount}" />
+                        <TextBlock
+                            Margin="20,0,5,0"
+                            FontSize="18"
+                            Text="{Binding TotalAmount}" />
                     </StackPanel>
                     <Button
                         Grid.Row="4"
                         Width="120"
                         Command="{Binding SaveOrderCommand}"
-                        Content="Save Order" />
+                        Content="Save Order"
+                        FontSize="18"
+                        Foreground="White" />
 
                 </Grid>
             </Border>

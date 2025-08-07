@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TradeOps.View.UserControlView"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -15,7 +14,7 @@
         Padding="10"
         Background="white"
         CornerRadius="6">
-        <Grid Background="White">
+        <Grid Margin="10" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="70" />
@@ -31,7 +30,8 @@
             <TextBlock
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontSize="32"
+                FontSize="24"
+                FontWeight="Bold"
                 Text="Products" />
             <Button
                 Grid.Row="0"
@@ -41,6 +41,7 @@
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteCommand}"
                 Content="Delete Selected Product"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
                 Grid.Row="0"
@@ -50,6 +51,7 @@
                 BorderBrush="#FF009688"
                 Command="{Binding EditCommand}"
                 Content="Edit Selected Product"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignRaisedLightButton}" />
             <Button
                 Grid.Row="0"
@@ -61,7 +63,7 @@
                 BorderThickness="0"
                 Command="{Binding OpenAddWindowCommand}"
                 Content="Add Product"
-                FontSize="16"
+                FontSize="18"
                 FontWeight="Medium"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}" />
             <!--  ===================Row 2============================================  -->
@@ -84,11 +86,12 @@
                     Width="120"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
+                    FontSize="18"
                     SelectedValue="{Binding SearchType, Mode=TwoWay}"
                     SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
-                    <ComboBoxItem Content="ID" />
-                    <ComboBoxItem Content="Name" />
+                    <ComboBoxItem Content="ID" FontSize="18" />
+                    <ComboBoxItem Content="Name" FontSize="18" />
                 </ComboBox>
 
                 <!--  TextBox: Search input  -->
@@ -97,6 +100,7 @@
                     Grid.ColumnSpan="2"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Enter search term"
+                    FontSize="18"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -112,6 +116,7 @@
                 AutoGenerateColumns="False"
                 BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
                 BorderThickness="1"
+                FontSize="18"
                 GridLinesVisibility="Horizontal"
                 HeadersVisibility="Column"
                 HorizontalGridLinesBrush="#10000000"
@@ -125,26 +130,32 @@
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding ID}"
+                        FontSize="18"
                         Header="ID" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Name}"
+                        FontSize="18"
                         Header="Name" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding PurchasePrice}"
+                        FontSize="18"
                         Header="Purchase Price" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding SellingPrice}"
+                        FontSize="18"
                         Header="Selling Price" />
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding ThresholdLevel}"
+                        FontSize="18"
                         Header="Threshold" />
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding StockQuantity}"
+                        FontSize="18"
                         Header="Stock" />
                     <DataGridCheckBoxColumn
                         Width="Auto"

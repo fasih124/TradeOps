@@ -28,9 +28,11 @@
             </Grid.ColumnDefinitions>
             <!--  ===================Row 1============================================  -->
             <TextBlock
+                Margin="10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontSize="32"
+                FontSize="24"
+                FontWeight="Bold"
                 Text="Customer" />
 
             <Button
@@ -41,6 +43,7 @@
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteCommand}"
                 Content="Delete Selected Customer"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
                 Grid.Row="0"
@@ -50,18 +53,19 @@
                 BorderBrush="#FF009688"
                 Command="{Binding EditCommand}"
                 Content="Edit Selected Customer"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
                 Grid.Row="0"
                 Grid.Column="3"
-                Margin="10,0"
+                Margin="10"
                 Padding="30,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 BorderThickness="0"
                 Command="{Binding OpenAddWindowCommand}"
                 Content="Add Customer"
-                FontSize="16"
+                FontSize="18"
                 FontWeight="Medium"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}" />
 
@@ -70,7 +74,7 @@
             <Grid
                 Grid.Row="1"
                 Grid.ColumnSpan="4"
-                Margin="2,17"
+                Margin="10,17"
                 HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -85,13 +89,14 @@
                     Width="150"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
+                    FontSize="18"
                     SelectedValue="{Binding SearchType, Mode=TwoWay}"
                     SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
-                    <ComboBoxItem Content="ID" />
-                    <ComboBoxItem Content="Name" />
-                    <ComboBoxItem Content="Area" />
-                    <ComboBoxItem Content="PhoneNumber" />
+                    <ComboBoxItem Content="ID" FontSize="18" />
+                    <ComboBoxItem Content="Name" FontSize="18" />
+                    <ComboBoxItem Content="Area" FontSize="18" />
+                    <ComboBoxItem Content="PhoneNumber" FontSize="18" />
                 </ComboBox>
 
                 <!--  TextBox: Search input  -->
@@ -99,6 +104,7 @@
                     Grid.Column="2"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Enter search term"
+                    FontSize="18"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -109,10 +115,11 @@
             <DataGrid
                 Grid.Row="2"
                 Grid.ColumnSpan="4"
-                Margin="0,10"
+                Margin="10"
                 AutoGenerateColumns="False"
                 BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
                 BorderThickness="1"
+                FontSize="18"
                 GridLinesVisibility="Horizontal"
                 HeadersVisibility="Column"
                 HorizontalGridLinesBrush="#10000000"
@@ -126,23 +133,28 @@
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding ID}"
+                        FontSize="18"
                         Header="ID" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Name}"
+                        FontSize="18"
                         Header="Name" />
 
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding PhoneNumber}"
+                        FontSize="18"
                         Header="Phone Number" />
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Area}"
+                        FontSize="18"
                         Header="Area" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Address}"
+                        FontSize="18"
                         Header="Address" />
 
 

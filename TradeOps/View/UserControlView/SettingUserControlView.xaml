@@ -15,7 +15,7 @@
         <!--  Title  -->
         <TextBlock
             Margin="0,0,0,20"
-            FontSize="32"
+            FontSize="24"
             FontWeight="Bold"
             Text="Setting" />
 
@@ -27,44 +27,53 @@
                     Margin="0,0,80,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="12"
+                    FontSize="18"
+                    FontWeight="Medium"
                     Text="Load previous data: " />
                 <Button
-                    Width="120"
+                    Width="150"
                     Click="ImportButton_Click"
-                    Content="Import Data" />
+                    Content="Import Data"
+                    FontSize="18"
+                    Foreground="white" />
 
             </StackPanel>
 
             <!--  Export  -->
             <StackPanel Margin="20" Orientation="Horizontal">
                 <TextBlock
-                    Margin="0,0,85,0"
+                    Margin="0,0,92,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="12"
+                    FontSize="18"
+                    FontWeight="Medium"
                     Text="Backup your data: " />
                 <Button
-                    Width="120"
+                    Width="150"
                     Click="ExportButton_Click"
-                    Content="Export Data" />
+                    Content="Export Data"
+                    FontSize="18"
+                    Foreground="White" />
 
             </StackPanel>
 
             <!--  Reset  -->
             <StackPanel Margin="20" Orientation="Horizontal">
                 <TextBlock
-                    Margin="0,0,100,0"
+                    Margin="0,0,118,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="12"
+                    FontSize="18"
+                    FontWeight="Medium"
                     Text="Delete all data: " />
                 <Button
-                    Width="120"
+                    Width="150"
                     Background="#FFFF7272"
                     BorderBrush="#FFFF7575"
                     Click="ResetButton_Click"
-                    Content="Reset" />
+                    Content="Reset"
+                    FontSize="18"
+                    Foreground="White" />
 
             </StackPanel>
         </StackPanel>

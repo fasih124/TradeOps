@@ -12,7 +12,7 @@
     d:DesignHeight="4050"
     d:DesignWidth="800"
     Background="White"
-    FontFamily="White"
+    FontFamily="{materialDesign:MaterialDesignFont}"
     mc:Ignorable="d">
     <!--  d:DesignHeight="450"  -->
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -85,7 +85,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Total Sales" />
                                     </Grid>
@@ -124,7 +124,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Total Profit" />
                                     </Grid>
@@ -177,7 +177,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Total Product" />
                                     </Grid>
@@ -215,7 +215,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Low Stock Product" />
                                     </Grid>
@@ -253,7 +253,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Out of Stock Product" />
                                     </Grid>
@@ -315,7 +315,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Total Order" />
                                     </Grid>
@@ -353,7 +353,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Pending Order" />
                                     </Grid>
@@ -406,7 +406,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Total Invoice " />
                                     </Grid>
@@ -444,7 +444,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Completed Invoice" />
                                     </Grid>
@@ -482,7 +482,7 @@
                                             Margin="0,10,0,0"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
-                                            FontSize="16"
+                                            FontSize="18"
                                             Foreground="Gray"
                                             Text="Pending Invoice" />
                                     </Grid>
@@ -528,7 +528,7 @@
                         <StackPanel Grid.Column="0">
                             <TextBlock
                                 Margin="10"
-                                FontSize="16"
+                                FontSize="18"
                                 FontWeight="Medium"
                                 Text="Top 10 Customers by Sales" />
 
@@ -541,13 +541,23 @@
                                 VerticalAlignment="Top"
                                 AutoGenerateColumns="False"
                                 CanUserAddRows="False"
+                                FontSize="18"
                                 HeadersVisibility="Column"
                                 ItemsSource="{Binding TopCustomersBySalesWithSrNo}">
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding SrNo}" Header="Sr No" />
-                                    <DataGridTextColumn Binding="{Binding CustomerName}" Header="Customer Name" />
-                                    <DataGridTextColumn Binding="{Binding TotalSale, StringFormat=N0}" Header="Total Sales" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding SrNo}"
+                                        FontSize="18"
+                                        Header="Sr No" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding CustomerName}"
+                                        FontSize="18"
+                                        Header="Customer Name" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding TotalSale, StringFormat=N0}"
+                                        FontSize="18"
+                                        Header="Total Sales" />
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -559,7 +569,7 @@
                         <StackPanel Grid.Column="2">
                             <TextBlock
                                 Margin="10"
-                                FontSize="16"
+                                FontSize="18"
                                 FontWeight="Medium"
                                 Text="Top 10 Customers by Profit" />
 
@@ -572,13 +582,23 @@
                                 VerticalAlignment="Top"
                                 AutoGenerateColumns="False"
                                 CanUserAddRows="False"
+                                FontSize="18"
                                 HeadersVisibility="Column"
                                 ItemsSource="{Binding TopCustomersByProfitWithSrNo}">
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding SrNo}" Header="Sr No" />
-                                    <DataGridTextColumn Binding="{Binding CustomerName}" Header="Customer Name" />
-                                    <DataGridTextColumn Binding="{Binding TotalProfit, StringFormat=N0}" Header="Total Profit" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding SrNo}"
+                                        FontSize="18"
+                                        Header="Sr No" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding CustomerName}"
+                                        FontSize="18"
+                                        Header="Customer Name" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding TotalProfit, StringFormat=N0}"
+                                        FontSize="18"
+                                        Header="Total Profit" />
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -603,12 +623,13 @@
                                 <TextBlock
                                     Margin="10"
                                     HorizontalAlignment="Center"
-                                    FontSize="16"
+                                    FontSize="18"
                                     FontWeight="Medium"
                                     Text="Sales Over Time " />
                                 <lvc:CartesianChart
                                     Width="500"
                                     Height="450"
+                                    FontSize="18"
                                     Series="{Binding SalesSeries}"
                                     XAxes="{Binding XAxes}"
                                     YAxes="{Binding YAxes}" />
@@ -625,13 +646,13 @@
                                     SelectedItem="{Binding SelectedRange}" />-->
                                 <TextBlock
                                     Margin="10"
-                                    HorizontalAlignment="Center"
-                                    FontSize="16"
+                                    FontSize="18"
                                     FontWeight="Medium"
                                     Text="Profit Over Time " />
                                 <lvc:CartesianChart
                                     Width="500"
                                     Height="450"
+                                    FontSize="18"
                                     Series="{Binding ProfitSeries}"
                                     XAxes="{Binding XAxes}"
                                     YAxes="{Binding YAxes}" />

@@ -18,6 +18,7 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Name"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.Name}" />
 
@@ -25,6 +26,7 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Area"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.Area}" />
 
@@ -32,6 +34,7 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Address"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.Address}" />
 
@@ -39,13 +42,17 @@
             <TextBox
                 Margin="10"
                 materialDesign:HintAssist.Hint="Phone"
+                FontSize="18"
+                PreviewTextInput="NumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.PhoneNumber}" />
 
             <Button
                 Margin="10"
                 Command="{Binding SaveCommand}"
-                Content="Save" />
+                Content="Save"
+                FontSize="18"
+                Foreground="White" />
         </StackPanel>
     </Grid>
 </Window>

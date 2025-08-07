@@ -9,7 +9,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    Background="#EEEEEE"
+    Background="White"
     FontFamily="{materialDesign:MaterialDesignFont}"
     Style="{StaticResource MaterialDesignWindow}"
     WindowStartupLocation="CenterScreen"
@@ -20,7 +20,7 @@
             Margin="0,-60,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="36"
+            FontSize="40"
             FontWeight="Bold"
             Foreground="{StaticResource AppPrimaryTintBrush2}"
             Text="Trade Track" />

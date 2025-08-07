@@ -25,11 +25,14 @@
         <StackPanel Grid.Row="0">
             <TextBlock
                 Margin="5"
-                FontSize="16"
+                FontSize="18"
                 FontWeight="Bold"
                 Text="{Binding Customer.Name}" />
 
-            <TextBlock Margin="5" Text="{Binding Date}" />
+            <TextBlock
+                Margin="5"
+                FontSize="18"
+                Text="{Binding Date}" />
 
         </StackPanel>
 
@@ -38,6 +41,7 @@
         <StackPanel Grid.Row="1">
             <TextBlock
                 Margin="0,10"
+                FontSize="18"
                 FontWeight="Bold"
                 Text="Order Items:" />
             <DataGrid
@@ -56,18 +60,22 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Product.Name}"
+                        FontSize="18"
                         Header="Product" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Quantity}"
+                        FontSize="18"
                         Header="Qty" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding SubTotal}"
+                        FontSize="18"
                         Header="SubTotal" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding SubProfit}"
+                        FontSize="18"
                         Header="SubProfit" />
                 </DataGrid.Columns>
             </DataGrid>
@@ -85,25 +93,25 @@
 
                 <TextBlock
                     Margin="5"
-                    FontSize="16"
+                    FontSize="18"
                     FontWeight="Medium"
                     Text="Total Price :" />
 
                 <TextBlock
                     Margin="5"
-                    FontSize="16"
+                    FontSize="18"
                     FontWeight="Medium"
                     Text="{Binding TotalPrice}" />
 
                 <TextBlock
                     Margin="5"
-                    FontSize="16"
+                    FontSize="18"
                     FontWeight="Medium"
                     Text="Total Profit :" />
 
                 <TextBlock
                     Margin="5"
-                    FontSize="16"
+                    FontSize="18"
                     FontWeight="Medium"
                     Text="{Binding TotalProfit}" />
 

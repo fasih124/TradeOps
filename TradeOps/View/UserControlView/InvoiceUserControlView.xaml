@@ -14,7 +14,7 @@
         Padding="10"
         Background="white"
         CornerRadius="6">
-        <Grid Background="white">
+        <Grid Margin="10" Background="white">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="70" />
@@ -30,7 +30,8 @@
             <TextBlock
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontSize="32"
+                FontSize="24"
+                FontWeight="Bold"
                 Text="Invoice" />
             <!--  row2  -->
             <Grid
@@ -51,12 +52,13 @@
                     Width="120"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Search by"
+                    FontSize="18"
                     SelectedValue="{Binding SearchType, Mode=TwoWay}"
                     SelectedValuePath="Content"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
-                    <ComboBoxItem Content="Invoice ID" />
-                    <ComboBoxItem Content="Order ID" />
-                    <ComboBoxItem Content="Date" />
+                    <ComboBoxItem Content="Invoice ID" FontSize="18" />
+                    <ComboBoxItem Content="Order ID" FontSize="18" />
+                    <ComboBoxItem Content="Date" FontSize="18" />
 
                 </ComboBox>
 
@@ -65,6 +67,7 @@
                     Grid.Column="2"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Enter search ..."
+                    FontSize="18"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -77,6 +80,7 @@
                 BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
                 BorderThickness="1"
                 CanUserAddRows="False"
+                FontSize="18"
                 GridLinesVisibility="Horizontal"
                 HeadersVisibility="Column"
                 HorizontalGridLinesBrush="#10000000"
@@ -90,6 +94,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding ID}"
+                        FontSize="18"
                         Header="Invoice ID">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -101,6 +106,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding OrderID}"
+                        FontSize="18"
                         Header="Order ID">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -112,6 +118,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding TotalPrice}"
+                        FontSize="18"
                         Header="Total Price">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -123,6 +130,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Discount}"
+                        FontSize="18"
                         Header="Discount">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -134,6 +142,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding FinalPrice}"
+                        FontSize="18"
                         Header="Net Total">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -145,6 +154,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding TotalProfit}"
+                        FontSize="18"
                         Header="Profit">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -156,6 +166,7 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Date}"
+                        FontSize="18"
                         Header="Date">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -191,11 +202,13 @@
                                         Margin="10,0"
                                         Command="{Binding DataContext.ApplyDiscountCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         CommandParameter="{Binding}"
+                                        FontSize="18"
                                         Style="{StaticResource MaterialDesignToolButton}"
                                         ToolTip="Apply Discount">
                                         <materialDesign:PackIcon
                                             Width="20"
                                             Height="20"
+                                            FontSize="18"
                                             Foreground="#FF43815B"
                                             Kind="HandCoinOutline" />
 
@@ -206,11 +219,13 @@
                                         Margin="10,0"
                                         Command="{Binding DataContext.PrintInvoiceCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         CommandParameter="{Binding}"
+                                        FontSize="18"
                                         Style="{StaticResource MaterialDesignToolButton}"
                                         ToolTip="Print Invoice">
                                         <materialDesign:PackIcon
                                             Width="20"
                                             Height="20"
+                                            FontSize="18"
                                             Foreground="#FFFF6262"
                                             Kind="Printer" />
                                     </Button>
