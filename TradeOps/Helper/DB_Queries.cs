@@ -14,7 +14,11 @@ namespace TradeOps.Helper
 {
     public class DB_Queries
     {
-        private static readonly string dbPath = "Assets\\TrackOps.db";
+        //private static readonly string dbPath = "Assets\\TrackOps.db";
+        private static readonly string dbFolder = Path.Combine(
+      Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TradeOps");
+
+        private static readonly string dbPath = Path.Combine(dbFolder, "TradeOps.db");
 
         public static SQLiteConnection GetConnection()
         {
@@ -26,10 +30,14 @@ namespace TradeOps.Helper
 
         public static void InitializeDatabase()
         {
+       
+
+
+            if (!Directory.Exists(dbFolder))
+                Directory.CreateDirectory(dbFolder);
+
             if (!File.Exists(dbPath))
-            {
                 SQLiteConnection.CreateFile(dbPath);
-            }
 
             using var con = GetConnection();
             con.Open();

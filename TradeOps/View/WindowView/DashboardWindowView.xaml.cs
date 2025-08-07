@@ -34,13 +34,7 @@ namespace TradeOps.View.WindowView
         {
             return new ObservableCollection<SampleItem>
             {
-                new SampleItem
-                {
-                    Title = "Dashboard",
-                    Notification = 0,
-                    SelectedIcon = PackIconKind.ViewDashboard,
-                    UnselectedIcon = PackIconKind.ViewDashboardOutline
-                },
+             
                 new SampleItem
                 {
                     Title = "Orders",
@@ -68,6 +62,12 @@ namespace TradeOps.View.WindowView
                     Notification = 0,
                     SelectedIcon = PackIconKind.InvoiceMultiple,
                     UnselectedIcon = PackIconKind.InvoiceMultipleOutline
+                },   new SampleItem
+                {
+                    Title = "Statistic",
+                    Notification = 0,
+                    SelectedIcon = PackIconKind.ChartBox,
+                    UnselectedIcon = PackIconKind.ChartBoxOutline
                 },
                 new SampleItem
                 {

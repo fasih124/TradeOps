@@ -21,7 +21,7 @@
             VerticalAlignment="Center"
             FontSize="40"
             FontWeight="Bold"
-            Text="Welcome to Trade Track" />
+            Text="Welcome to TradeOps" />
         <TextBlock
             Margin="0,-70,0,0"
             HorizontalAlignment="Center"

@@ -180,7 +180,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTemplateColumn Width="150" Header="Action">
+                    <DataGridTemplateColumn Width="170" Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button

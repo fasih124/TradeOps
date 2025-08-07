@@ -28,9 +28,18 @@ namespace TradeOps.View.UserControlView
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Importing data...", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
-            DataManagement.loadData();
-            MessageBox.Show("Successfully loaded data from the Location", "Export", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                MessageBox.Show("Importing data...", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
+                DataManagement.loadData();
+                MessageBox.Show("Successfully loaded data from the Location", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Import Fails!! \nCreate a Folder with named \"BackupCSV\" and  paste cvs files in that Folder ", "Import", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            
         }
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)

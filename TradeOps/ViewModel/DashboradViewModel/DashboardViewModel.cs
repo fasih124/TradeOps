@@ -198,17 +198,21 @@ namespace TradeOps.ViewModel.DashboradViewModel
             TotalCustomers = DB_Queries.GetTotalCustomerCount();
         }
 
+
         public void LoadSaleDashboardData()
         {
             using var con = DB_Queries.GetConnection();
             con.Open();
 
             using var cmd1 = new SQLiteCommand("SELECT SUM(total_price) FROM Invoice", con);
-            TotalSales = Convert.ToDouble(cmd1.ExecuteScalar() ?? 0);
+            var totalSalesObj = cmd1.ExecuteScalar();
+            TotalSales = totalSalesObj != DBNull.Value ? Convert.ToDouble(totalSalesObj) : 0;
 
             using var cmd2 = new SQLiteCommand("SELECT SUM(total_profit) FROM Invoice", con);
-            TotalProfit = Convert.ToDouble(cmd2.ExecuteScalar() ?? 0);
+            var totalProfitObj = cmd2.ExecuteScalar();
+            TotalProfit = totalProfitObj != DBNull.Value ? Convert.ToDouble(totalProfitObj) : 0;
         }
+
 
         private void LoadInvoiceDashboardStats()
         {

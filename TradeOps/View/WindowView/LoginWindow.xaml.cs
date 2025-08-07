@@ -29,7 +29,7 @@ namespace TradeOps.View.WindowView
             string enteredPassword = PasswordInput.Password;
 
             // Replace with your actual check (e.g., compare with database, config, etc.)
-            string correctPassword = "1";
+            string correctPassword = "goodbyetradeops#144";
 
 
 

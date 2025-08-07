@@ -24,7 +24,7 @@
                 VerticalAlignment="Top"
                 FontSize="24"
                 FontWeight="Bold"
-                Text="Dashboard" />
+                Text="statistic" />
             <!--  Info Section  -->
 
 
