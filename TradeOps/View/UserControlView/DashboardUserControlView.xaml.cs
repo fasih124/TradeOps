@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TradeOps.ViewModel.DashboradViewModel;
 
 namespace TradeOps.View.UserControlView
 {
@@ -23,6 +24,8 @@ namespace TradeOps.View.UserControlView
         public DashboardUserControlView()
         {
             InitializeComponent();
+
+            DataContext = new DashboardViewModel();
         }
     }
 }

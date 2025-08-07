@@ -446,7 +446,7 @@ namespace TradeOps.Helper
                 {
                     connection.Open();
 
-                    string orderQuery = @"SELECT o.ID, o.Date, o.isCompleted, o.customerID, 
+                    string orderQuery = @"SELECT o.ID, substr(o.Date, 9, 2) || '-' || substr(o.Date, 6, 2) || '-' || substr(o.Date, 1, 4) AS FormattedDate, o.isCompleted, o.customerID, 
                                          c.ID as CustomerID, c.Name, c.address, c.area,c.phone_number 
                                   FROM CustomerOrder o 
                                   JOIN Customer c ON o.customerID = c.ID";
@@ -459,7 +459,7 @@ namespace TradeOps.Helper
                             var order = new CustomerOrder
                             {
                                 ID = Convert.ToInt32(reader["ID"]),
-                                Date = reader["Date"].ToString(),
+                                Date = reader["FormattedDate"].ToString(),
                                 IsCompleted = Convert.ToBoolean(reader["isCompleted"]),
                                 Customer = new Customer
                                 {
@@ -528,7 +528,7 @@ namespace TradeOps.Helper
             con.Open();
             using var transaction = con.BeginTransaction();
 
-            var orderDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            var orderDate = DateTime.Now.ToString("yyyy-MM-dd");
 
             // Insert into CustomerOrder
             var insertOrderCmd = new SQLiteCommand("INSERT INTO CustomerOrder (Date, CustomerID, isCompleted) VALUES (@Date, @CustomerID, 0);", con);
@@ -564,7 +564,7 @@ namespace TradeOps.Helper
             using var con = GetConnection();
             con.Open();
 
-            var date = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
 
             var insertInvoiceCmd = new SQLiteCommand("INSERT INTO Invoice (OrderID, total_price, total_profit, discount, isPaid, date) VALUES (@OrderID, @Total, @Profit, 0, 0, @Date);", con);
             insertInvoiceCmd.Parameters.AddWithValue("@OrderID", orderId);
@@ -688,7 +688,14 @@ namespace TradeOps.Helper
 
             using var con = GetConnection();
             con.Open();
-            var cmd = new SQLiteCommand("SELECT * FROM CustomerOrder WHERE ID = @id", con);
+            var cmd = new SQLiteCommand(@"
+        SELECT 
+            ID, 
+            substr(Date, 9, 2) || '-' || substr(Date, 6, 2) || '-' || substr(Date, 1, 4) AS Date,
+            isCompleted, 
+            customerID 
+        FROM CustomerOrder 
+        WHERE ID = @id", con);
             cmd.Parameters.AddWithValue("@id", orderId);
 
             using var reader = cmd.ExecuteReader();
@@ -719,7 +726,18 @@ namespace TradeOps.Helper
 
             using var con = GetConnection();
             con.Open();
-            var cmd = new SQLiteCommand("SELECT * FROM Invoice", con);
+
+            var cmd = new SQLiteCommand(@"
+            SELECT 
+            ID,
+            OrderID,
+            total_price,
+            total_profit,
+            discount,
+            isPaid,
+            substr(date, 9, 2) || '-' || substr(date, 6, 2) || '-' || substr(date, 1, 4) AS date
+            FROM Invoice", con);
+            //var cmd = new SQLiteCommand("SELECT * FROM Invoice", con);
             using var reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -772,5 +790,367 @@ namespace TradeOps.Helper
 
             con.Close();
         }
+
+
+        //===============================
+        //Dashboard Related Queries
+        //================================
+
+        public static Dictionary<string, double> GetSalesOverTime()
+        {
+            var salesData = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+
+            var cmd = new SQLiteCommand(@"
+        SELECT date, SUM(total_price) AS TotalSales
+        FROM Invoice
+        GROUP BY date
+        ORDER BY date;
+    ", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string date = reader["date"].ToString();
+                double totalSales = Convert.ToDouble(reader["TotalSales"]);
+                salesData[date] = totalSales;
+            }
+
+            return salesData;
+        }
+
+        public static Dictionary<string, double> GetProfitOverTime()
+        {
+            var profitData = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+
+            var cmd = new SQLiteCommand(@"
+        SELECT date, SUM(total_profit) AS TotalProfit
+        FROM Invoice
+        GROUP BY date
+        ORDER BY date;
+    ", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string date = reader["date"].ToString();
+                double totalProfit = Convert.ToDouble(reader["TotalProfit"]);
+                profitData[date] = totalProfit;
+            }
+
+            return profitData;
+        }
+
+
+        public static Dictionary<string, double> GetSalesLast7Days()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT Date,
+               SUM(TotalPrice) AS TotalSales
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        WHERE Date >= date('now', '-6 days')
+        GROUP BY Date
+        ORDER BY Date;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var date = DateTime.Parse(reader["Date"].ToString()).ToString("dd MMM");
+                var sales = Convert.ToDouble(reader["TotalSales"]);
+                result[date] = sales;
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, double> GetProfitLast7Days()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT Date,
+               SUM(TotalProfit) AS TotalProfit
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        WHERE Date >= date('now', '-6 days')
+        GROUP BY Date
+        ORDER BY Date;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var date = DateTime.Parse(reader["Date"].ToString()).ToString("dd MMM");
+                var profit = Convert.ToDouble(reader["TotalProfit"]);
+                result[date] = profit;
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, double> GetSalesByMonth()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT strftime('%Y-%m', Date) AS Month,
+               SUM(TotalPrice) AS TotalSales
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        GROUP BY Month
+        ORDER BY Month;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var rawMonth = reader["Month"].ToString(); // e.g., "2025-08"
+                var monthLabel = DateTime.Parse(rawMonth + "-01").ToString("MMM yyyy"); // e.g., "Aug 2025"
+                var sales = Convert.ToDouble(reader["TotalSales"]);
+                result[monthLabel] = sales;
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, double> GetProfitByMonth()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT strftime('%Y-%m', Date) AS Month,
+               SUM(TotalProfit) AS TotalProfit
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        GROUP BY Month
+        ORDER BY Month;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var rawMonth = reader["Month"].ToString();
+                var monthLabel = DateTime.Parse(rawMonth + "-01").ToString("MMM yyyy");
+                var profit = Convert.ToDouble(reader["TotalProfit"]);
+                result[monthLabel] = profit;
+            }
+
+            return result;
+        }
+
+
+        public static Dictionary<string, double> GetSalesByYear()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT strftime('%Y', Date) AS Year,
+               SUM(TotalPrice) AS TotalSales
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        GROUP BY Year
+        ORDER BY Year;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var year = reader["Year"].ToString();
+                var sales = Convert.ToDouble(reader["TotalSales"]);
+                result[year] = sales;
+            }
+
+            return result;
+        }
+
+
+        public static Dictionary<string, double> GetProfitByYear()
+        {
+            var result = new Dictionary<string, double>();
+
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT strftime('%Y', Date) AS Year,
+               SUM(TotalProfit) AS TotalProfit
+        FROM Invoice
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID
+        GROUP BY Year
+        ORDER BY Year;", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var year = reader["Year"].ToString();
+                var profit = Convert.ToDouble(reader["TotalProfit"]);
+                result[year] = profit;
+            }
+
+            return result;
+        }
+
+        public static int GetTotalOrderCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT COUNT(*) FROM CustomerOrder", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int GetPendingOrderCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT COUNT(*) FROM CustomerOrder WHERE isCompleted = 0", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+
+        public static int GetTotalInvoiceCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            using var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Invoice", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int GetCompletedInvoiceCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            string query = @"
+        SELECT COUNT(*) 
+        FROM Invoice 
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID 
+        WHERE CustomerOrder.isCompleted = 1";
+            using var cmd = new SQLiteCommand(query, con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int GetPendingInvoiceCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            string query = @"
+        SELECT COUNT(*) 
+        FROM Invoice 
+        INNER JOIN CustomerOrder ON Invoice.OrderID = CustomerOrder.ID 
+        WHERE CustomerOrder.isCompleted = 0";
+            using var cmd = new SQLiteCommand(query, con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+        public static int GetTotalCustomerCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Customer", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+
+        public static int GetTotalProductCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Product", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int GetLowStockProductCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand(@"
+        SELECT COUNT(*) FROM Product 
+        WHERE (IsTracked = 1 AND inventory_Stock <= 0) 
+           OR (IsTracked = 1 AND inventory_Stock < threshold_Level)", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int GetOutOfStockProductCount()
+        {
+            using var con = GetConnection();
+            con.Open();
+            var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Product WHERE IsTracked = 0", con);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+
+        public static List<CustomerSummary> GetTop10CustomersBySales()
+        {
+            var list = new List<CustomerSummary>();
+            using var con = GetConnection();
+            con.Open();
+
+            var cmd = new SQLiteCommand(@"
+        SELECT c.name AS CustomerName,
+               SUM(i.total_price) AS TotalSale
+        FROM Invoice i
+        JOIN CustomerOrder co ON i.orderID = co.ID
+        JOIN Customer c ON co.customerID = c.ID
+        GROUP BY c.ID
+        ORDER BY TotalSale DESC
+        LIMIT 10", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new CustomerSummary
+                {
+                    CustomerName = reader["CustomerName"].ToString(),
+                    TotalSale = Convert.ToDouble(reader["TotalSale"])
+                });
+            }
+
+            return list;
+        }
+
+
+        public static List<CustomerSummary> GetTop10CustomersByProfit()
+        {
+            var list = new List<CustomerSummary>();
+            using var con = GetConnection();
+            con.Open();
+
+            var cmd = new SQLiteCommand(@"
+        SELECT c.name AS CustomerName,
+               SUM(i.total_profit) AS TotalProfit
+        FROM Invoice i
+        JOIN CustomerOrder co ON i.orderID = co.ID
+        JOIN Customer c ON co.customerID = c.ID
+        GROUP BY c.ID
+        ORDER BY TotalProfit DESC
+        LIMIT 10", con);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new CustomerSummary
+                {
+                    CustomerName = reader["CustomerName"].ToString(),
+                    TotalProfit = Convert.ToDouble(reader["TotalProfit"])
+                });
+            }
+
+            return list;
+        }
+
+
+
+
     }
 }

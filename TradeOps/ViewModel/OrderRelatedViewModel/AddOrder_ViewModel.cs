@@ -22,7 +22,6 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
         public Customer SelectedCustomer { get; set; }
         public Product SelectedProduct { get; set; }
         public int EnteredQuantity { get; set; }
-
         public int TotalQuantity { get; set; }
         public double TotalAmount { get; set; }
         public double TotalProfit { get; set; }

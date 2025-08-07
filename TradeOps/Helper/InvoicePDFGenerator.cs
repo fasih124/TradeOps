@@ -15,86 +15,6 @@ namespace TradeOps.Helper
 {
     public static class InvoicePDFGenerator
     {
-        //public static void GenerateInvoicePdf(Invoice invoice, CustomerOrder order)
-        //{
-        //    try
-        //    {
-        //        GlobalFontSettings.UseWindowsFontsUnderWindows = true;
-
-        //        var doc = new PdfDocument();
-        //        doc.Info.Title = "Invoice";
-        //        var page = doc.AddPage();
-        //        var gfx = XGraphics.FromPdfPage(page);
-        //        var font = new XFont("Arial", 12, XFontStyleEx.Regular);
-        //        var boldFont = new XFont("Arial", 12, XFontStyleEx.Bold);
-        //        double yPoint = 40;
-
-        //        // --- Order Details ---
-        //        gfx.DrawString("Order Details", boldFont, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Order ID: \t\t{order.ID}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Order Date: \t\t{order.Date}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-
-        //        // --- Customer Details ---
-        //        yPoint += 30;
-        //        gfx.DrawString("Customer Details", boldFont, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Customer Name: \t\t {order.Customer.Name}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Customer ID: \t\t{order.CustomerID}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-
-        //        // --- Product Details Header ---
-        //        yPoint += 30;
-        //        gfx.DrawString("Product Details", boldFont, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-
-        //        // Table Headers
-        //        gfx.DrawString("Name", boldFont, XBrushes.Black, new XRect(60, yPoint, 150, page.Height), XStringFormats.TopLeft);
-        //        gfx.DrawString("Qty", boldFont, XBrushes.Black, new XRect(220, yPoint, 50, page.Height), XStringFormats.TopLeft);
-        //        gfx.DrawString("Unit Price", boldFont, XBrushes.Black, new XRect(280, yPoint, 100, page.Height), XStringFormats.TopLeft);
-        //        gfx.DrawString("Subtotal", boldFont, XBrushes.Black, new XRect(400, yPoint, 100, page.Height), XStringFormats.TopLeft);
-
-        //        yPoint += 20;
-
-        //        // Product Detail Rows
-        //        foreach (var detail in order.ProductDetails)
-        //        {
-        //            gfx.DrawString(detail.Product?.Name, font, XBrushes.Black, new XRect(60, yPoint, 150, page.Height), XStringFormats.TopLeft);
-        //            gfx.DrawString(detail.Quantity.ToString(), font, XBrushes.Black, new XRect(220, yPoint, 50, page.Height), XStringFormats.TopLeft);
-        //            gfx.DrawString(detail.Product.SellingPrice.ToString("F2"), font, XBrushes.Black, new XRect(280, yPoint, 100, page.Height), XStringFormats.TopLeft);
-        //            gfx.DrawString(detail.SubTotal.ToString("F2"), font, XBrushes.Black, new XRect(400, yPoint, 100, page.Height), XStringFormats.TopLeft);
-        //            yPoint += 20;
-        //        }
-
-        //        // --- Invoice Summary ---
-        //        yPoint += 30;
-        //        gfx.DrawString("Invoice Summary", boldFont, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Invoice ID: \t\t{invoice.ID}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Total: \t\t{invoice.TotalPrice:F2}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-        //        gfx.DrawString($"Discount: \t\t{invoice.Discount:F2}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-        //        yPoint += 20;
-
-        //        double finalPrice = invoice.TotalPrice - invoice.Discount;
-        //        gfx.DrawString($"Net Total: \t\t{finalPrice:F2}", font, XBrushes.Black, new XRect(60, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-
-        //        // --- Save File ---
-        //        string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        //        string fileName = $"Invoice_{invoice.ID}.pdf";
-        //        string fullPath = Path.Combine(folderPath, fileName);
-
-        //        doc.Save(fullPath);
-        //        // Optionally open the file:
-        //        // Process.Start(new ProcessStartInfo(fullPath) { UseShellExecute = true });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error generating invoice PDF:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
 
         public static void GenerateInvoicePdf(Invoice invoice, CustomerOrder order)
         {
@@ -118,7 +38,7 @@ namespace TradeOps.Helper
                 gfx.DrawLine(XPens.Black, margin, yPoint - 20, page.Width - margin, yPoint - 20);
 
                 // --- Title Centered ---
-                gfx.DrawString("TrackOps", titleFont, XBrushes.Black,
+                gfx.DrawString("TradeOps", titleFont, XBrushes.Black,
                     new XRect(0, yPoint - 15, page.Width, 20), XStringFormats.TopCenter);
 
                
@@ -223,7 +143,7 @@ namespace TradeOps.Helper
                 string invoiceFolder = Path.Combine(exePath, "Invoices");
                 if (!Directory.Exists(invoiceFolder)) Directory.CreateDirectory(invoiceFolder);
 
-                string fileName = $"Invoice_{invoice.ID}.pdf";
+                string fileName = $"{invoice.Date:dd-MM-yyyy}_Invoice_{invoice.ID}.pdf";
                 string fullPath = Path.Combine(invoiceFolder, fileName);
 
                 doc.Save(fullPath);
