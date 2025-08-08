@@ -34,7 +34,8 @@ namespace TradeOps.Helper
 
         public static void BackupData()
         {
-            string backupFolder = "BackupCSV";
+            string  backupFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TradeOps", "BackupCSV");
+
             Directory.CreateDirectory(backupFolder);
 
             ExportTableToCSV("Customer", Path.Combine(backupFolder, "Customer.csv"));
@@ -100,7 +101,7 @@ namespace TradeOps.Helper
 
         public static void loadData() 
         {
-            string backupFolder = "BackupCSV";
+            string backupFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TradeOps", "BackupCSV");
             Directory.CreateDirectory(backupFolder);
 
             ImportCSVToTable("Customer", Path.Combine(backupFolder, "Customer.csv"));

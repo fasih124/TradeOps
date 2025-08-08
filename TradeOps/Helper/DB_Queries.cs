@@ -16,7 +16,7 @@ namespace TradeOps.Helper
     {
         //private static readonly string dbPath = "Assets\\TrackOps.db";
         private static readonly string dbFolder = Path.Combine(
-      Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TradeOps");
+      Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TradeOps");
 
         private static readonly string dbPath = Path.Combine(dbFolder, "TradeOps.db");
 
@@ -135,6 +135,32 @@ namespace TradeOps.Helper
 
             return products;
         }
+
+
+        public static bool ProductExists(string productName)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM Product WHERE name = @Name";
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", productName);
+                        long count = (long)command.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exists ERROR: " + ex.Message);
+                return false;
+            }
+        }
+
 
         public static bool InsertProduct(Product product)
         {

@@ -153,10 +153,15 @@ namespace TradeOps.Helper
                     new XRect(0, yPoint + 20, page.Width, 20), XStringFormats.Center);
 
                 // --- Save to PDF ---
-                string exePath = AppDomain.CurrentDomain.BaseDirectory;
-                string invoiceFolder = Path.Combine(exePath, "Invoices");
-                if (!Directory.Exists(invoiceFolder)) Directory.CreateDirectory(invoiceFolder);
 
+
+                // Use Documents/TradeOps/Invoices instead of exe path
+                string invoiceFolder = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "TradeOps", "Invoices");
+
+                // Create folder if it doesn't exist
+                Directory.CreateDirectory(invoiceFolder);
                 string fileName = $"{invoice.Date:dd-MM-yyyy}_{customerName}_Invoice_{invoice.ID}.pdf";
                 string fullPath = Path.Combine(invoiceFolder, fileName);
 

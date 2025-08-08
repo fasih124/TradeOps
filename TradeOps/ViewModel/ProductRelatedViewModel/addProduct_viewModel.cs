@@ -29,6 +29,18 @@ namespace TradeOps.ViewModel
 
         private void SaveProduct(object obj)
         {
+            if (string.IsNullOrWhiteSpace(Product.Name))
+            {
+                MessageBox.Show("Product name cannot be empty.");
+                return;
+            }
+
+            if (DB_Queries.ProductExists(Product.Name))
+            {
+                MessageBox.Show("Product with this name already exists.");
+                return;
+            }
+
             if (DB_Queries.InsertProduct(Product))
             {
                 MessageBox.Show("Product added successfully!");
@@ -39,7 +51,6 @@ namespace TradeOps.ViewModel
                 MessageBox.Show("Error while adding product.");
             }
         }
-
 
 
 

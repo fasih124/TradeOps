@@ -36,7 +36,7 @@
 
             <TextBox
                 Margin="10"
-                materialDesign:HintAssist.Hint="Address"
+                materialDesign:HintAssist.Hint="Shop Address"
                 FontSize="18"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.Address}" />

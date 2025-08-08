@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeOps", "TradeOps\TradeOps.csproj", "{363F3BCF-BAE0-49D9-9680-E98BF83EA195}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TradeOpsInstaller", "TradeOpsInstaller\TradeOpsInstaller.vdproj", "{B5486F5F-E4F7-499A-42D6-B807ED85A2A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{363F3BCF-BAE0-49D9-9680-E98BF83EA195}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{363F3BCF-BAE0-49D9-9680-E98BF83EA195}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{363F3BCF-BAE0-49D9-9680-E98BF83EA195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5486F5F-E4F7-499A-42D6-B807ED85A2A8}.Debug|Any CPU.ActiveCfg = Debug
+		{B5486F5F-E4F7-499A-42D6-B807ED85A2A8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

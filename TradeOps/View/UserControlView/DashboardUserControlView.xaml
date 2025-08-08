@@ -9,7 +9,7 @@
     xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="4050"
+    d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
     FontFamily="{materialDesign:MaterialDesignFont}"
@@ -183,7 +183,6 @@
                                     </Grid>
                                 </materialDesign:Card>
                                 <materialDesign:Card
-                                    Width="180"
                                     Height="120"
                                     Margin="12"
                                     Padding="16"
@@ -221,7 +220,6 @@
                                     </Grid>
                                 </materialDesign:Card>
                                 <materialDesign:Card
-                                    Width="180"
                                     Height="120"
                                     Margin="12"
                                     Padding="16"
