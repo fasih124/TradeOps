@@ -40,7 +40,7 @@
                 Background="#ffffff"
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteCommand}"
-                Content="Delete Selected Product"
+                Content="Delete Product"
                 FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
@@ -50,7 +50,7 @@
                 Background="#ffffff"
                 BorderBrush="#FF009688"
                 Command="{Binding EditCommand}"
-                Content="Edit Selected Product"
+                Content="Edit Product"
                 FontSize="18"
                 Style="{StaticResource MaterialDesignRaisedLightButton}" />
             <Button

@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:TradeOps.View.WindowView"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="DashboardWindowView"
+    Title="Trade Ops"
     Width="800"
     Height="450"
     FontFamily="{materialDesign:MaterialDesignFont}"

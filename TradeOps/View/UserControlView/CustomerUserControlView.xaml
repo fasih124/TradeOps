@@ -14,7 +14,7 @@
         Padding="10"
         Background="white"
         CornerRadius="6">
-        <Grid Background="white">
+        <Grid Margin="10" Background="white">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="70" />
@@ -28,7 +28,6 @@
             </Grid.ColumnDefinitions>
             <!--  ===================Row 1============================================  -->
             <TextBlock
-                Margin="10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="24"
@@ -42,7 +41,7 @@
                 Background="#ffffff"
                 BorderBrush="#FF009688"
                 Command="{Binding DeleteCommand}"
-                Content="Delete Selected Customer"
+                Content="Delete Customer"
                 FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
@@ -52,13 +51,12 @@
                 Background="#ffffff"
                 BorderBrush="#FF009688"
                 Command="{Binding EditCommand}"
-                Content="Edit Selected Customer"
+                Content="Edit Customer"
                 FontSize="18"
                 Style="{StaticResource MaterialDesignPaperLightButton}" />
             <Button
                 Grid.Row="0"
                 Grid.Column="3"
-                Margin="10"
                 Padding="30,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
@@ -74,7 +72,7 @@
             <Grid
                 Grid.Row="1"
                 Grid.ColumnSpan="4"
-                Margin="10,17"
+                Margin="0,17"
                 HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -115,7 +113,6 @@
             <DataGrid
                 Grid.Row="2"
                 Grid.ColumnSpan="4"
-                Margin="10"
                 AutoGenerateColumns="False"
                 BorderBrush="{StaticResource AppBackgroundShadeBrush2}"
                 BorderThickness="1"

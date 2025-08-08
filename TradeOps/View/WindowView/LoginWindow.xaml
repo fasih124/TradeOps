@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:TradeOps.View.WindowView"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="LoginWindow"
+    Title="Login"
     Width="800"
     Height="450"
     FontFamily="{materialDesign:MaterialDesignFont}"
@@ -16,14 +16,14 @@
     mc:Ignorable="d">
     <Grid>
         <TextBlock
-            Margin="0,-140,0,0"
+            Margin="0,-240,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="40"
+            FontSize="44"
             FontWeight="Bold"
             Text="Welcome to TradeOps" />
         <TextBlock
-            Margin="0,-70,0,0"
+            Margin="0,-170,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="20"
@@ -36,15 +36,14 @@
             VerticalAlignment="Center">
 
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 
 
                 <!--  Hidden PasswordBox  -->
                 <PasswordBox
                     x:Name="PasswordBoxHidden"
-                    Width="250"
+                    Width="230"
                     Height="40"
-                    Margin="10"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -57,9 +56,8 @@
                 <!--  Visible TextBox for showing password  -->
                 <TextBox
                     x:Name="PasswordBoxVisible"
-                    Width="250"
+                    Width="230"
                     Height="40"
-                    Margin="10"
                     Padding="5"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -71,16 +69,17 @@
 
                 <!--  Toggle show/hide button with eye icon  -->
                 <Button
-                    Width="60"
+                    Width="50"
                     Height="40"
-                    Margin="0,10"
                     HorizontalAlignment="Right"
+                    Background="LightGray"
+                    BorderBrush="LightGray"
                     Click="TogglePasswordVisibility"
                     Foreground="White">
                     <materialDesign:PackIcon
                         x:Name="EyeIcon"
-                        Width="24"
-                        Height="24"
+                        Width="20"
+                        Height="20"
                         Kind="Eye" />
                 </Button>
             </StackPanel>
@@ -98,7 +97,7 @@
             <!--  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />  -->
 
             <Button
-                Width="320"
+                Width="280"
                 Height="40"
                 Margin="10"
                 Click="Button_Click"
