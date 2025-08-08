@@ -142,12 +142,12 @@
                         Header="Name" />
 
                     <DataGridTextColumn
-                        Width="Auto"
+                        Width="*"
                         Binding="{Binding PhoneNumber}"
                         FontSize="18"
                         Header="Phone Number" />
                     <DataGridTextColumn
-                        Width="Auto"
+                        Width="*"
                         Binding="{Binding Area}"
                         FontSize="18"
                         Header="Area" />
@@ -155,7 +155,7 @@
                         Width="*"
                         Binding="{Binding Address}"
                         FontSize="18"
-                        Header="Address" />
+                        Header="Shop / Address" />
 
 
                 </DataGrid.Columns>

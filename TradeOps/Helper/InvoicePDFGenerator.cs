@@ -1,6 +1,7 @@
 ﻿using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using PdfSharp.UniversalAccessibility.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -57,7 +58,12 @@ namespace TradeOps.Helper
                 gfx.DrawString($"Invoice ID: INV{invoice.ID}", boldFont, XBrushes.Black,
                     new XRect(margin + 2 * sectionWidth, infoY, sectionWidth, 20), XStringFormats.TopRight);
 
+                yPoint += 15;
+
+                gfx.DrawLine(XPens.Black, margin, infoY + 20, page.Width - margin, infoY + 20);
+
                 yPoint += 25;
+
 
                 // --- Customer Info Line (Customer Name, Order Date) ---
                 string customerName = order.Customer?.Name ?? "Unknown Customer";
@@ -70,6 +76,14 @@ namespace TradeOps.Helper
 
                 yPoint += 30;
 
+                gfx.DrawString($"Shop: {order.Customer.Address}", font, XBrushes.Black,
+                   new XRect(margin, yPoint, sectionWidth, 20), XStringFormats.TopLeft);
+
+                gfx.DrawString($"Payment Status: {(invoice.IsPaid ? "Paid" : "Pending")}", font, (invoice.IsPaid ? XBrushes.Green : XBrushes.Red),
+                   new XRect(page.Width - margin - sectionWidth, yPoint, sectionWidth, 20), XStringFormats.TopRight);
+
+
+                yPoint += 30;
                 // --- Product Table Header ---
                 double tableLeft = margin;
                 double tableWidth = page.Width - 2 * margin;
@@ -143,7 +157,7 @@ namespace TradeOps.Helper
                 string invoiceFolder = Path.Combine(exePath, "Invoices");
                 if (!Directory.Exists(invoiceFolder)) Directory.CreateDirectory(invoiceFolder);
 
-                string fileName = $"{invoice.Date:dd-MM-yyyy}_Invoice_{invoice.ID}.pdf";
+                string fileName = $"{invoice.Date:dd-MM-yyyy}_{customerName}_Invoice_{invoice.ID}.pdf";
                 string fullPath = Path.Combine(invoiceFolder, fileName);
 
                 doc.Save(fullPath);

@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using TradeOps.Helper;
 using TradeOps.Model;
+using TradeOps.View.WindowView.OrderWindow;
 
 namespace TradeOps.ViewModel.OrderRelatedViewModel
 {
@@ -29,7 +30,7 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
         public ICommand AddProductCommand { get; set; }
         public ICommand SaveOrderCommand { get; set; }
         public ICommand RemoveProductCommand { get; }
-
+        public ICommand OpenProductPickerCommand { get; }
 
         public AddOrderViewModel()
         {
@@ -40,6 +41,32 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
             SaveOrderCommand = new RelayCommand(SaveOrder);
             
             RemoveProductCommand = new RelayCommand(RemoveProduct);
+            OpenProductPickerCommand = new RelayCommand(OpenProductPicker);
+        }
+
+        private void OpenProductPicker(object obj)
+        {
+            var picker = new ProductPickerOrderWindow();
+            bool? result = picker.ShowDialog();
+
+            if (result == true && picker.SelectedProduct != null)
+            {
+                var selectedProduct = picker.SelectedProduct;
+
+                // Example: Add to your current order
+                var orderDetail = new OrderDetail
+                {
+                    ProductID = selectedProduct.ID,
+                     Product = selectedProduct,
+                    Quantity = 1, // Default, user may update later
+                };
+
+                orderDetail.PropertyChanged += OrderDetail_PropertyChanged;
+
+                CurrentOrderDetails.Add(orderDetail);
+                // Or any ObservableCollection<OrderDetail> you're using
+            }
+            UpdateTotals();
         }
 
 

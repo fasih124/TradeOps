@@ -42,14 +42,20 @@
                     SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
 
                 <CheckBox
-                    Margin="100,0,0,0"
+                    Margin="30,0,0,0"
                     Content="Order Completed"
                     FontSize="18"
                     IsChecked="{Binding Complete}" />
+                <Button
+                    Margin="10,0,0,0"
+                    Command="{Binding ShowProductPickerCommand}"
+                    Content="Add Product"
+                    FontSize="18"
+                    Foreground="White" />
             </StackPanel>
 
             <!--  Select Product and Quantity  -->
-            <StackPanel
+            <!--<StackPanel
                 Grid.Row="1"
                 Margin="0,0,0,10"
                 Orientation="Horizontal">
@@ -85,7 +91,8 @@
                     Content="Add Product"
                     FontSize="18"
                     Foreground="White" />
-            </StackPanel>
+
+            </StackPanel>-->
 
             <!--  Order Details Table  -->
             <DataGrid

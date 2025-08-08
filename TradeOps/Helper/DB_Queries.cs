@@ -30,7 +30,7 @@ namespace TradeOps.Helper
 
         public static void InitializeDatabase()
         {
-       
+
 
 
             if (!Directory.Exists(dbFolder))
@@ -585,7 +585,7 @@ namespace TradeOps.Helper
         }
 
 
-        public static void UpdateOrder(long orderId, Customer customer, ObservableCollection<OrderDetail> updatedDetails, double totalAmount, double totalProfit,bool isCompleted)
+        public static void UpdateOrder(long orderId, Customer customer, ObservableCollection<OrderDetail> updatedDetails, double totalAmount, double totalProfit, bool isCompleted)
         {
             using var con = GetConnection();
             con.Open();
@@ -637,8 +637,8 @@ namespace TradeOps.Helper
 
 
 
-            
-         
+
+
 
 
 
@@ -795,7 +795,7 @@ namespace TradeOps.Helper
             con.Close();
         }
 
-        public static void UpdateInvoiceStatus(bool flag ,int id)
+        public static void UpdateInvoiceStatus(bool flag, int id)
         {
             using var con = GetConnection();
             con.Open();

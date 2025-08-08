@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Inipagi-Business-Economic-Invoice.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,10 @@
   <ItemGroup>
     <Page Remove="Assets\Resources\AppColorsDictionary.xaml" />
     <Page Remove="Assets\Resources\AppTextStyleDictionary.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Inipagi-Business-Economic-Invoice.ico" />
   </ItemGroup>
 
   <ItemGroup>

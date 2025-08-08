@@ -7,8 +7,9 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Discount Input"
-    Width="350"
-    Height="200"
+    Width="450"
+    Height="300"
+    FontFamily="{materialDesign:MaterialDesignFont}"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Grid Margin="20">
@@ -25,10 +26,11 @@
 
         <TextBox
             x:Name="DiscountTextBox"
-            Grid.Row="1"     PreviewTextInput="NumberOnly_PreviewTextInput"
+            Grid.Row="1"
             VerticalContentAlignment="Center"
             materialDesign:HintAssist.Hint="Discount"
             FontSize="18"
+            PreviewTextInput="NumberOnly_PreviewTextInput"
             Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
         <StackPanel

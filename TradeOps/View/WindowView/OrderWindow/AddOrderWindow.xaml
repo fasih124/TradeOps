@@ -42,10 +42,16 @@
                     FontSize="18"
                     ItemsSource="{Binding Customers}"
                     SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
+                <Button
+                    Margin="20,0"
+                    Command="{Binding OpenProductPickerCommand}"
+                    Content="Add Product"
+                    FontSize="18"
+                    Foreground="White" />
             </StackPanel>
 
             <!--  Select Product and Quantity  -->
-            <StackPanel
+            <!--<StackPanel
                 Grid.Row="1"
                 Margin="0,0,0,10"
                 Orientation="Horizontal">
@@ -81,7 +87,12 @@
                     Content="Add Product"
                     FontSize="18"
                     Foreground="White" />
-            </StackPanel>
+                <Button
+                    Command="{Binding OpenProductPickerCommand}"
+                    Content="Add Product"
+                    FontSize="18"
+                    Foreground="White" />
+            </StackPanel>-->
 
             <!--  Order Details Table  -->
             <DataGrid

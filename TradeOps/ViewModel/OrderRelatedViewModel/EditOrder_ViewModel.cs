@@ -9,23 +9,224 @@ using System.Windows;
 using System.Windows.Input;
 using TradeOps.Helper;
 using TradeOps.Model;
+using TradeOps.View.WindowView.OrderWindow;
 
 namespace TradeOps.ViewModel.OrderRelatedViewModel
 {
-    internal class EditOrder_ViewModel : BaseViewModel
+    //internal class EditOrder_ViewModel : BaseViewModel
+    //{
+    //    public ObservableCollection<Customer> Customers { get; set; } = new();
+    //    public ObservableCollection<Product> Products { get; set; } = new();
+    //    public ObservableCollection<OrderDetail> CurrentOrderDetails { get; set; } = new();
+    //    public ICommand ShowProductPickerCommand { get; }
+
+    //    //public Customer SelectedCustomer { get; set; }
+    //    private Customer _selectedCustomer;
+    //    public Customer SelectedCustomer
+    //    {
+    //        get => _selectedCustomer;
+    //        set => SetProperty(ref _selectedCustomer, value);
+    //    }
+    //    public Product SelectedProduct { get; set; }
+    //    private bool _complete;
+    //    public bool Complete
+    //    {
+    //        get => _complete;
+    //        set => SetProperty(ref _complete, value);
+    //    }
+
+
+    //    public int EnteredQuantity { get; set; }
+
+    //    public int TotalQuantity { get; set; }
+    //    public double TotalAmount { get; set; }
+    //    public double TotalProfit { get; set; }
+    //    public ICommand AddProductCommand => new RelayCommand(ExecuteAddProduct);
+    //    private void ExecuteAddProduct(object obj)
+    //    {
+    //        AddProductToOrder(SelectedProduct, EnteredQuantity);
+    //        EnteredQuantity = 0;
+    //        OnPropertyChanged(nameof(EnteredQuantity));
+    //    }
+    //    //public ICommand AddProductCommand { get; set; }
+    //    public ICommand SaveOrderCommand { get; set; }
+    //    public ICommand RemoveProductCommand { get; }
+
+    //    private readonly CustomerOrder _originalOrder;
+
+    //    public EditOrder_ViewModel(CustomerOrder order)
+    //    {
+    //        _originalOrder = order;
+
+    //        LoadCustomers();
+    //        LoadProducts();
+
+    //        SelectedCustomer = Customers.FirstOrDefault(c => c.ID == order.Customer.ID);
+    //        Complete = order.IsCompleted;
+
+    //        foreach (var detail in order.ProductDetails)
+    //        {
+    //            var newDetail = new OrderDetail(detail.Quantity, detail.Product);
+    //            newDetail.PropertyChanged += OrderDetail_PropertyChanged;
+    //            CurrentOrderDetails.Add(newDetail);
+    //        }
+
+    //        UpdateTotals();
+
+    //        AddProductCommand = new RelayCommand(AddProduct);
+    //        SaveOrderCommand = new RelayCommand(SaveOrder);
+    //       RemoveProductCommand = new RelayCommand(RemoveProduct);
+    //        ShowProductPickerCommand = new RelayCommand(OpenProductPicker);
+    //    }
+
+    //    private void OpenProductPicker(object obj)
+    //    {
+    //        var dialog = new EditProductPickerDialog();
+    //        if (dialog.ShowDialog() == true)
+    //        {
+    //            var selectedProduct = dialog.SelectedProduct;
+    //            if (selectedProduct != null)
+    //            {
+    //                AddProductToOrder(selectedProduct);
+    //            }
+
+    //        }
+    //    }
+
+    //    private void AddProductToOrder(Product product, int quantity)
+    //    {
+    //        if (product != null && quantity > 0)
+    //        {
+    //            var existing = CurrentOrderDetails.FirstOrDefault(p => p.Product.ID == product.ID);
+    //            if (existing != null)
+    //            {
+    //                existing.Quantity += quantity;
+    //            }
+    //            else
+    //            {
+    //                var detail = new OrderDetail(quantity, product);
+    //                detail.PropertyChanged += OrderDetail_PropertyChanged;
+    //                CurrentOrderDetails.Add(detail);
+    //            }
+
+    //            UpdateTotals();
+    //        }
+    //    }
+
+    //    private void RemoveProduct(object obj)
+    //    {
+    //        if (obj is OrderDetail detail && CurrentOrderDetails.Contains(detail))
+    //        {
+    //            CurrentOrderDetails.Remove(detail);
+    //            detail.PropertyChanged -= OrderDetail_PropertyChanged;
+    //            UpdateTotals();
+    //        }
+    //    }
+    //    private void LoadCustomers()
+    //    {
+    //        Customers.Clear();
+    //        foreach (var customer in DB_Queries.GetAllCustomers())
+    //            Customers.Add(customer);
+    //    }
+
+    //    private void LoadProducts()
+    //    {
+    //        Products.Clear();
+    //        foreach (var product in DB_Queries.GetAllProducts())
+    //            Products.Add(product);
+    //    }
+
+    //    private void AddProduct(object obj)
+    //    {
+    //        if (SelectedProduct != null && EnteredQuantity > 0)
+    //        {
+    //            var existing = CurrentOrderDetails.FirstOrDefault(p => p.Product.ID == SelectedProduct.ID);
+    //            if (existing != null) { 
+    //                existing.Quantity += EnteredQuantity;
+    //        }
+    //        else
+    //        {
+    //            var detail = new OrderDetail(EnteredQuantity, SelectedProduct);
+    //                detail.PropertyChanged += OrderDetail_PropertyChanged;
+    //                CurrentOrderDetails.Add(detail);
+    //        }
+    //            EnteredQuantity = 0;
+    //            OnPropertyChanged(nameof(EnteredQuantity));
+    //            UpdateTotals();
+    //        }
+    //    }
+
+    //    private void OrderDetail_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    //    {
+    //        if (e.PropertyName == nameof(OrderDetail.Quantity) ||
+    //            e.PropertyName == nameof(OrderDetail.SubTotal) ||
+    //            e.PropertyName == nameof(OrderDetail.SubProfit) ||
+    //            e.PropertyName == nameof(OrderDetail.Product.SellingPrice) ||
+    //            e.PropertyName == nameof(OrderDetail.Product.PurchasePrice))
+    //        {
+    //            UpdateTotals();
+    //        }
+    //    }
+
+    //    private void UpdateTotals()
+    //    {
+    //        TotalQuantity = 0;
+    //        TotalAmount = 0;
+    //        TotalProfit = 0;
+
+    //        foreach (var item in CurrentOrderDetails)
+    //        {
+    //            TotalQuantity += item.Quantity;
+    //            TotalAmount += item.SubTotal;
+    //            TotalProfit += item.SubProfit;
+    //        }
+
+    //        OnPropertyChanged(nameof(TotalQuantity));
+    //        OnPropertyChanged(nameof(TotalAmount));
+    //        OnPropertyChanged(nameof(TotalProfit));
+    //    }
+
+    //    private void SaveOrder(object obj)
+    //    {
+    //        if (SelectedCustomer == null || CurrentOrderDetails.Count == 0)
+    //        {
+    //            MessageBox.Show("Please select a customer and add products.");
+    //            return;
+    //        }
+
+    //        try
+    //        {
+    //            DB_Queries.UpdateOrder(_originalOrder.ID, SelectedCustomer, CurrentOrderDetails, TotalAmount, TotalProfit,Complete);
+    //            MessageBox.Show("Order updated successfully!");
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            MessageBox.Show("Error updating order: " + ex.Message);
+    //        }
+    //    }
+
+    //}
+
+    public class EditOrder_ViewModel : BaseViewModel
     {
         public ObservableCollection<Customer> Customers { get; set; } = new();
         public ObservableCollection<Product> Products { get; set; } = new();
         public ObservableCollection<OrderDetail> CurrentOrderDetails { get; set; } = new();
 
-        //public Customer SelectedCustomer { get; set; }
         private Customer _selectedCustomer;
         public Customer SelectedCustomer
         {
             get => _selectedCustomer;
             set => SetProperty(ref _selectedCustomer, value);
         }
-        public Product SelectedProduct { get; set; }
+
+        private Product _selectedProduct;
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set => SetProperty(ref _selectedProduct, value);
+        }
+
         private bool _complete;
         public bool Complete
         {
@@ -33,16 +234,38 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
             set => SetProperty(ref _complete, value);
         }
 
+        private int _enteredQuantity;
+        public int EnteredQuantity
+        {
+            get => _enteredQuantity;
+            set => SetProperty(ref _enteredQuantity, value);
+        }
 
-        public int EnteredQuantity { get; set; }
+        private int _totalQuantity;
+        public int TotalQuantity
+        {
+            get => _totalQuantity;
+            set => SetProperty(ref _totalQuantity, value);
+        }
 
-        public int TotalQuantity { get; set; }
-        public double TotalAmount { get; set; }
-        public double TotalProfit { get; set; }
+        private double _totalAmount;
+        public double TotalAmount
+        {
+            get => _totalAmount;
+            set => SetProperty(ref _totalAmount, value);
+        }
 
-        public ICommand AddProductCommand { get; set; }
-        public ICommand SaveOrderCommand { get; set; }
+        private double _totalProfit;
+        public double TotalProfit
+        {
+            get => _totalProfit;
+            set => SetProperty(ref _totalProfit, value);
+        }
+
+        public ICommand AddProductCommand { get; }
+        public ICommand SaveOrderCommand { get; }
         public ICommand RemoveProductCommand { get; }
+        public ICommand ShowProductPickerCommand { get; }
 
         private readonly CustomerOrder _originalOrder;
 
@@ -63,21 +286,14 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
                 CurrentOrderDetails.Add(newDetail);
             }
 
-            UpdateTotals();
-
-            AddProductCommand = new RelayCommand(AddProduct);
+            AddProductCommand = new RelayCommand(ExecuteAddProduct);
             SaveOrderCommand = new RelayCommand(SaveOrder);
-           RemoveProductCommand = new RelayCommand(RemoveProduct);
+            RemoveProductCommand = new RelayCommand(RemoveProduct);
+            ShowProductPickerCommand = new RelayCommand(OpenProductPicker);
+
+            UpdateTotals();
         }
-        private void RemoveProduct(object obj)
-        {
-            if (obj is OrderDetail detail && CurrentOrderDetails.Contains(detail))
-            {
-                CurrentOrderDetails.Remove(detail);
-                detail.PropertyChanged -= OrderDetail_PropertyChanged;
-                UpdateTotals();
-            }
-        }
+
         private void LoadCustomers()
         {
             Customers.Clear();
@@ -92,33 +308,44 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
                 Products.Add(product);
         }
 
-        private void AddProduct(object obj)
+        private void ExecuteAddProduct(object obj)
         {
-            if (SelectedProduct != null && EnteredQuantity > 0)
+            AddProductToOrder(SelectedProduct, EnteredQuantity);
+            EnteredQuantity = 0;
+        }
+
+        private void AddProductToOrder(Product product, int quantity)
+        {
+            if (product == null || quantity <= 0) return;
+
+            var existing = CurrentOrderDetails.FirstOrDefault(p => p.Product.ID == product.ID);
+            if (existing != null)
             {
-                var existing = CurrentOrderDetails.FirstOrDefault(p => p.Product.ID == SelectedProduct.ID);
-                if (existing != null) { 
-                    existing.Quantity += EnteredQuantity;
+                existing.Quantity += quantity;
             }
             else
             {
-                var detail = new OrderDetail(EnteredQuantity, SelectedProduct);
-                    detail.PropertyChanged += OrderDetail_PropertyChanged;
-                    CurrentOrderDetails.Add(detail);
+                var detail = new OrderDetail(quantity, product);
+                detail.PropertyChanged += OrderDetail_PropertyChanged;
+                CurrentOrderDetails.Add(detail);
             }
-                EnteredQuantity = 0;
-                OnPropertyChanged(nameof(EnteredQuantity));
+
+            UpdateTotals();
+        }
+
+        private void RemoveProduct(object obj)
+        {
+            if (obj is OrderDetail detail && CurrentOrderDetails.Contains(detail))
+            {
+                CurrentOrderDetails.Remove(detail);
+                detail.PropertyChanged -= OrderDetail_PropertyChanged;
                 UpdateTotals();
             }
         }
 
         private void OrderDetail_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(OrderDetail.Quantity) ||
-                e.PropertyName == nameof(OrderDetail.SubTotal) ||
-                e.PropertyName == nameof(OrderDetail.SubProfit) ||
-                e.PropertyName == nameof(OrderDetail.Product.SellingPrice) ||
-                e.PropertyName == nameof(OrderDetail.Product.PurchasePrice))
+            if (e.PropertyName is nameof(OrderDetail.Quantity) or nameof(OrderDetail.SubTotal) or nameof(OrderDetail.SubProfit))
             {
                 UpdateTotals();
             }
@@ -126,40 +353,41 @@ namespace TradeOps.ViewModel.OrderRelatedViewModel
 
         private void UpdateTotals()
         {
-            TotalQuantity = 0;
-            TotalAmount = 0;
-            TotalProfit = 0;
-
-            foreach (var item in CurrentOrderDetails)
-            {
-                TotalQuantity += item.Quantity;
-                TotalAmount += item.SubTotal;
-                TotalProfit += item.SubProfit;
-            }
-
-            OnPropertyChanged(nameof(TotalQuantity));
-            OnPropertyChanged(nameof(TotalAmount));
-            OnPropertyChanged(nameof(TotalProfit));
+            TotalQuantity = CurrentOrderDetails.Sum(d => d.Quantity);
+            TotalAmount = CurrentOrderDetails.Sum(d => d.SubTotal);
+            TotalProfit = CurrentOrderDetails.Sum(d => d.SubProfit);
         }
 
         private void SaveOrder(object obj)
         {
             if (SelectedCustomer == null || CurrentOrderDetails.Count == 0)
             {
-                MessageBox.Show("Please select a customer and add products.");
+                MessageBox.Show("Please select a customer and add at least one product.");
                 return;
             }
 
             try
             {
-                DB_Queries.UpdateOrder(_originalOrder.ID, SelectedCustomer, CurrentOrderDetails, TotalAmount, TotalProfit,Complete);
-                MessageBox.Show("Order updated successfully!");
+                DB_Queries.UpdateOrder(_originalOrder.ID, SelectedCustomer, CurrentOrderDetails, TotalAmount, TotalProfit, Complete);
+                MessageBox.Show("Order updated successfully.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating order: " + ex.Message);
+                MessageBox.Show("Error saving order: " + ex.Message);
             }
         }
 
+        private void OpenProductPicker(object obj)
+        {
+            var dialog = new EditProductPickerDialog(); // Make sure this is implemented
+            if (dialog.ShowDialog() == true)
+            {
+                if (dialog.SelectedProduct != null)
+                {
+                    // You can ask for quantity with a prompt or default to 1
+                    AddProductToOrder(dialog.SelectedProduct, 1);
+                }
+            }
+        }
     }
 }
