@@ -30,13 +30,19 @@ namespace TradeOps.View.WindowView.CustomerWindow
             this.DataContext = vm;
         }
 
-        private static readonly Regex _numericRegex = new Regex(@"^[0-9]*(\.[0-9]*)?$"); // Allow decimal
-                                                                                         // For integer-only: use @"^[0-9]+$"
+        // Match exactly 11 digits
+        private static readonly Regex _phoneRegex = new Regex(@"^\d{0,11}$");
 
-        private void NumberOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void PhoneNumberOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            var fullText = ((TextBox)sender).Text.Insert(((TextBox)sender).SelectionStart, e.Text);
-            e.Handled = !_numericRegex.IsMatch(fullText);
+            TextBox textBox = (TextBox)sender;
+
+            // Simulate full text after new input
+            string fullText = textBox.Text.Insert(textBox.SelectionStart, e.Text);
+
+            // Only allow if full text is 0 to 11 digits
+            e.Handled = !_phoneRegex.IsMatch(fullText);
         }
+
     }
 }

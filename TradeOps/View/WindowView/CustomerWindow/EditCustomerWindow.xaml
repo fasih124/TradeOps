@@ -41,9 +41,9 @@
 
             <TextBox
                 Margin="10"
-                materialDesign:HintAssist.Hint="Phone"
+                materialDesign:HintAssist.Hint="Phone Number (03XX-XXXXXXX)"
                 FontSize="18"
-                PreviewTextInput="NumberOnly_PreviewTextInput"
+                PreviewTextInput="PhoneNumberOnly_PreviewTextInput"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 Text="{Binding Customer.PhoneNumber}" />
 

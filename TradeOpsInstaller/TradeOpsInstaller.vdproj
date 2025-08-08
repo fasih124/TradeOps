@@ -15,67 +15,67 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0CD5B26386844E03BBE70580FC8ACB15"
+        "MsmKey" = "8:_03B03F586B0B40278E637403BC4CC46A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0E4162C9291D4787B1D5A09135C6FED1"
+        "MsmKey" = "8:_041982A7D8BA49B29AD65818E9DDDE32"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1071135E32F9401FB8E71F5101065F88"
+        "MsmKey" = "8:_0C9CCDE851054BF0B355ABA8423B1EB3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_201ABB42E3114F94A5C3084527244526"
+        "MsmKey" = "8:_1D4D740123FB485786DFE1808177C359"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4CB71D03C74F48F6A91C18CC8EF151F5"
+        "MsmKey" = "8:_2D2787A4FA864F3A88FA3DB2E230999F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_86DFB2DB2A12464CB73BD4D2542CE004"
+        "MsmKey" = "8:_79FA0EB05EC34EDFBB47AD848D5E7532"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_94B01497CC1942EEBCA16B299CFBA0CA"
+        "MsmKey" = "8:_A455B0338D3F4B19AC65DF570052F01F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A1E3133D01F64D4BBECF0800FFFC7A0B"
+        "MsmKey" = "8:_C27BC18F363F482C8FDEAE3D555E2C8C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AB5B92B67A7946399D46F2F53E837820"
+        "MsmKey" = "8:_C2A6AFD6BE5244929EF2E41FAFD3FD95"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B9A9F7243B9547899B9D48E606C16CBF"
+        "MsmKey" = "8:_C4B7787265A9491A84A25BD788EEC445"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FAB3D8E72B6847619A46E995BE930FCB"
+        "MsmKey" = "8:_D67F5CB841444D57B9BF1151D0211F29"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -97,6 +97,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -113,6 +121,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -134,7 +150,27 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CD5B26386844E03BBE70580FC8ACB15"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03B03F586B0B40278E637403BC4CC46A"
+            {
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\wpfgfx_cor3.dll"
+            "TargetName" = "8:wpfgfx_cor3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_041982A7D8BA49B29AD65818E9DDDE32"
             {
             "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\libSkiaSharp.dll"
             "TargetName" = "8:libSkiaSharp.dll"
@@ -154,67 +190,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E4162C9291D4787B1D5A09135C6FED1"
-            {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\vcruntime140_cor3.dll"
-            "TargetName" = "8:vcruntime140_cor3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1071135E32F9401FB8E71F5101065F88"
-            {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\libHarfBuzzSharp.dll"
-            "TargetName" = "8:libHarfBuzzSharp.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_201ABB42E3114F94A5C3084527244526"
-            {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\D3DCompiler_47_cor3.dll"
-            "TargetName" = "8:D3DCompiler_47_cor3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4CB71D03C74F48F6A91C18CC8EF151F5"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C9CCDE851054BF0B355ABA8423B1EB3"
             {
             "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\SQLite.Interop.dll"
             "TargetName" = "8:SQLite.Interop.dll"
@@ -234,27 +210,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86DFB2DB2A12464CB73BD4D2542CE004"
-            {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\PenImc_cor3.dll"
-            "TargetName" = "8:PenImc_cor3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94B01497CC1942EEBCA16B299CFBA0CA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1D4D740123FB485786DFE1808177C359"
             {
             "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\sni.dll"
             "TargetName" = "8:sni.dll"
@@ -274,10 +230,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A1E3133D01F64D4BBECF0800FFFC7A0B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D2787A4FA864F3A88FA3DB2E230999F"
             {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\TradeOps.exe"
-            "TargetName" = "8:TradeOps.exe"
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\D3DCompiler_47_cor3.dll"
+            "TargetName" = "8:D3DCompiler_47_cor3.dll"
             "Tag" = "8:"
             "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
             "Condition" = "8:"
@@ -294,7 +250,47 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AB5B92B67A7946399D46F2F53E837820"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_79FA0EB05EC34EDFBB47AD848D5E7532"
+            {
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\vcruntime140_cor3.dll"
+            "TargetName" = "8:vcruntime140_cor3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A455B0338D3F4B19AC65DF570052F01F"
+            {
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\libHarfBuzzSharp.dll"
+            "TargetName" = "8:libHarfBuzzSharp.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C27BC18F363F482C8FDEAE3D555E2C8C"
             {
             "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\PresentationNative_cor3.dll"
             "TargetName" = "8:PresentationNative_cor3.dll"
@@ -314,10 +310,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B9A9F7243B9547899B9D48E606C16CBF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C2A6AFD6BE5244929EF2E41FAFD3FD95"
             {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\TradeOps.pdb"
-            "TargetName" = "8:TradeOps.pdb"
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\TradeOps.exe"
+            "TargetName" = "8:TradeOps.exe"
             "Tag" = "8:"
             "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
             "Condition" = "8:"
@@ -334,10 +330,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FAB3D8E72B6847619A46E995BE930FCB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C4B7787265A9491A84A25BD788EEC445"
             {
-            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\wpfgfx_cor3.dll"
-            "TargetName" = "8:wpfgfx_cor3.dll"
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\PenImc_cor3.dll"
+            "TargetName" = "8:PenImc_cor3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D67F5CB841444D57B9BF1151D0211F29"
+            {
+            "SourcePath" = "8:C:\\Users\\msi\\Documents\\MySoftware\\TradeOps.pdb"
+            "TargetName" = "8:TradeOps.pdb"
             "Tag" = "8:"
             "Folder" = "8:_C5D34F079AC343E9B0513F2AF50501F4"
             "Condition" = "8:"
