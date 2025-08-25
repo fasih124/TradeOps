@@ -1,4 +1,4 @@
-# **TradeOps — Wholesale Business Management System** 🛒
+# **TradeOps — Wholesale Business Management System**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-WPF%20%7C%20SQLite-blue?style=for-the-badge" alt="Platform" />
@@ -79,11 +79,9 @@ cd TradeOps
 
 ## 📸 **Screenshots**
 
-> *(Add screenshots of your app later for better visuals.)*
-
-| Dashboard                                         | Products                                         | Orders                                         |
-| ------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
-| ![Dashboard](https://via.placeholder.com/400x220) | ![Products](https://via.placeholder.com/400x220) | ![Orders](https://via.placeholder.com/400x220) |
+| Splash Screen                                         | Login Screen                                         | Product Screen                                         | Statistic Screen                                         |Invoice pdf                                         |
+| ------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| ![Splash](Screenshots/splash.PNG) | ![Login](Screenshots/login.PNG)| ![Product](Screenshots/product.PNG) | ![Statistic](Screenshots/stats.PNG) | ![InvoicePDF](Screenshots/Invoice.PNG) |
 
 ---
 
